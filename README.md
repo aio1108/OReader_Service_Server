@@ -1,4 +1,4 @@
-OReader_Service_Server
+O-Reader Service Server
 ======================
 
 The service server for O-Reader.
