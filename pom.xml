@@ -134,7 +134,7 @@
 	            
 	<!-- CaseRunner -->
    	<dependency>
-		<groupId>com.hyweb</groupId>
+		<groupId>tw.com.useful</groupId>
 		<artifactId>case-runner</artifactId>
 		<version>1.5.2-SNAPSHOT</version>
 	</dependency>

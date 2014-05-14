@@ -54,7 +54,7 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.hyweb.runner.util.RmJDomUtil;
+import tw.com.useful.runner.util.RmJDomUtil;
 
 /**
  * Utility class for transforming JSON to XML an back.<br>

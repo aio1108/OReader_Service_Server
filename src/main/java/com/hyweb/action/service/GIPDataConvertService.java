@@ -9,7 +9,7 @@ import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jdom.xpath.XPath;
 
-import com.hyweb.runner.util.LogicalService;
+import tw.com.useful.runner.util.LogicalService;
 
 public class GIPDataConvertService extends LogicalService
 {

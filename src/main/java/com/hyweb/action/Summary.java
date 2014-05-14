@@ -15,12 +15,12 @@ import org.jdom.JDOMException;
 import org.jdom.xpath.XPath;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import com.hyweb.runner.VariableContainer;
-import com.hyweb.runner.util.LogicalException;
-import com.hyweb.runner.util.LogicalAction;
-import com.hyweb.runner.util.LsUtil;
-import com.hyweb.runner.util.RmJDomUtil;
-import com.hyweb.runner.util.ActionUtil;
+import tw.com.useful.runner.VariableContainer;
+import tw.com.useful.runner.util.ActionUtil;
+import tw.com.useful.runner.util.LogicalAction;
+import tw.com.useful.runner.util.LogicalException;
+import tw.com.useful.runner.util.LsUtil;
+import tw.com.useful.runner.util.RmJDomUtil;
 
 public class Summary extends LogicalAction
 {	

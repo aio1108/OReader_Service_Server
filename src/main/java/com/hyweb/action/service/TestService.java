@@ -12,8 +12,8 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.jdom.Element;
 import org.mybatis.spring.SqlSessionTemplate;
 
-import com.hyweb.runner.util.LogicalService;
-import com.hyweb.runner.util.SpringContext;
+import tw.com.useful.runner.util.LogicalService;
+import tw.com.useful.runner.util.SpringContext;
 
 public class TestService extends LogicalService
 {
