@@ -1,0 +1,21 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+/*--footer design--*/
+.footer {
+	padding:10px 10px 15px 0px;
+	margin:0px auto;
+	clear:both;
+	font-size:1em;
+	line-height:140%;
+	text-align:center;
+	background-color:#818181;
+}
+
+.footer p{
+	color:#fff;
+	clear:both;
+	text-align:center;
+}
+

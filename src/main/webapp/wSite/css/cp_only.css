@@ -1,0 +1,723 @@
+@charset "UTF-8";
+/* CSS Document */
+
+
+.Right_input{ 
+      float:right;
+      margin-right:20px;
+      margin-top:10px;
+      margin-bottom:5px;
+      
+      }
+      
+      
+.btn_right {
+    color: #006C6C; 
+    text-align: center;
+    padding: 2px 12px 2px 12px;
+    cursor:pointer;
+    vertical-align: 0px;
+    background-image:url(../images/btn_search.jpg);
+    background-repeat:repeat-x;
+    background-position:left top;
+    font-size:13px;
+    font-weight:bold;
+    margin:0px 0px 0px 3px;
+    width:52px;
+    height:25px;
+    border:1px solid #999;
+    line-height:1.8em;
+    }
+      
+
+/*-----------------------次標題-------------------------*/
+.Title_h3 {
+    clear:both;
+    margin:5px 0 0 20px;
+    padding:4px 0 0 28px;;
+    width:95%;
+    min-width: 659px;   
+    height:22px;
+    background-color:#dddfdf;
+    font-size:16px; 
+    font-weight:bold;       
+    color:#19629d;
+    background-image:url(../images/icon_blue.gif);
+    background-position:7px 5px;
+    background-repeat:no-repeat;
+    position:relative;
+    border:1px solid #CCC;
+    
+}
+
+.Title_h3 span {
+    float:right;
+    margin-right:10px;
+    position:absolute;
+    right: -4px;
+    top: 4px;
+    font-size:85%;
+    color:#333;
+    
+}
+
+/*------------mark------------------------*/
+
+.mark {
+    margin:10px 0 0 0;
+    
+}
+
+
+.mark li{
+    background-image:url(../images/mark_arrow_blue.gif);
+    background-repeat:no-repeat;
+    background-position:left top;
+    width:139px;
+    min-height:71px;
+    color:#fdd2a4;
+    font-size:13px;
+    padding:8px 0 0 15px;
+    line-height:1.5em;  
+    display:block;
+    }
+    
+.mark li.over{
+    background-image:url(../images/mark_arrow_red.gif);
+    background-repeat:no-repeat;
+    background-position:left top;
+    color:#fdd2a4;
+    font-size:13px;
+    padding:8px 0 0 15px;
+    line-height:1.5em;  
+    }
+
+.mark li span,.mark li.over span{
+    color:#FFF;
+    font-size:20px;
+    font-weight:bold;   
+    }
+    
+.mark li span em,.mark li.over span em{ 
+    font-size:13px;
+    margin-top:5px;
+    line-height:1.5em;  
+    display:block;
+    }
+    
+.mark li span em a,.mark li.over span em a{
+    color:#FFF;    
+    }
+    
+    
+.mark li span em a:hover,.mark li.over span em a:hover{
+    color:#FFF;
+    text-decoration:underline;
+    }
+    
+
+.mark ul li ul   {
+    display:block;
+    width:139px;
+    margin-left:-15px;
+    margin-top:25px;
+    margin-bottom:10px; 
+    
+    }
+
+.mark ul li ul li  {
+    width:109px;
+    min-height:20px;
+    font-size:13px;
+    padding:2px;
+    line-height:1.5em;
+    background-color:#2F91BB;
+    border:1px dotted #FFF;
+    background-image:none;
+    display:block;
+    text-indent:-20px;
+    padding-left:29px;
+    }
+    
+.mark ul li.over a  {
+    text-decoration:none;
+    color:#FFF;
+    }
+    
+.mark ul li.over a:hover  {
+    text-decoration:underline;  
+    color:#fff; 
+}
+
+.mark ul li.over ul li  {
+    background-color:#b55c55;
+}
+    
+.mark ul li ul li.here  {
+    color:#fff;
+    background-color:#C30;
+}   
+
+
+
+/*--------------------------------------------------------------------------------[ list ]-----*/
+.List{
+    margin:5px 0px 10px 25px;
+    padding:0;
+    display:block;
+    width:98%;
+    }
+.List .line{
+    border:2px solid #248aaa;   
+    
+}
+.List .headline{    
+    height:13px;
+    margin:0px ;
+    padding:5px 0 5px 0px;
+    background: url(../images/lpTb3_title_bg.gif) left top repeat-x;
+    font-size:110%;
+    color:#FFF;
+    display:block;
+    text-align:left;
+    position:relative;
+    height:20px;
+    font-weight:bold;
+    width:auto;
+
+}
+
+
+    
+.List .headline span {
+    float:right;
+    margin-right:10px;
+    position:absolute;
+    right: 5px;
+    top: 0px;   
+    
+}
+
+.List .headline h3{
+    padding:0px 0 5px 10px;
+    font-size:110%;
+    text-align:left;
+    font-weight:bold;
+    line-height:1.2em;
+}
+
+.List .body{
+    background-color:#ceebfe;
+    margin:0px;
+    padding:0px;
+    text-align:center;
+    display:block;
+    overflow:hidden;
+
+}
+
+
+/* ---------------------------------------.List_Tb----------- */
+.List_Tb {
+    clear: both;    
+    width: 98%;
+    text-align:left;
+    
+}
+.List_Tb table {
+    width: 100%;
+    margin: 5px 0px 10px 0px;
+    border-collapse: collapse;
+        
+}
+.List_Tb table caption {
+    line-height: 120%;
+    text-align:left;
+    color:#999;
+}
+.List_Tb table tr.altrow{
+    background: #FDFEF5;
+}
+.List_Tb table th {
+    text-align:left;
+    line-height: 165%;
+    white-space: nowrap;
+    vertical-align: middle;
+    padding: 2px 4px 2px 4px;
+    white-space: nowrap;
+    color: #fff;
+    font-weight: bold;
+    border-left:6px solid #65c8f2;
+    background-color:#3fa5cf;
+    position:relative;
+
+}
+
+
+.List_Tb table th .right_box {
+    width:80px;
+    float:right;
+    margin-top:-20px;
+}
+
+.List_Tb table td img {
+    margin: 0 3px;
+    cursor: pointer;
+}
+.List_Tb table td {
+    line-height: 1.8em; 
+    padding: 2px;
+    border-top: 1px dotted #65c8f2;
+    vertical-align:top;
+    text-align:left;
+}
+
+
+
+.List_Tb table td.date{ text-align:center; }
+.List_Tb table td.number{ 
+   text-align:center;
+   color:#dd420c;
+}
+
+.List_Tb table td.center{ 
+   text-align:center;
+  
+   
+}
+.List_Tb table td a {
+    margin-right: 4px;
+    color:#EC4848;
+    text-decoration:underline;
+}
+.List_Tb table td a:hover {
+    text-decoration:underline;
+}
+
+
+/* ---------------------------------------.List_Tb3----------- */
+.List_Tb3 {
+    clear: both;
+    width:80%;  
+    
+}
+.List_Tb3 table {   
+    margin: 5px 0px 10px 0px;
+    border-collapse: collapse;
+    border:0px;
+    margin:auto;
+    
+        
+}
+.List_Tb3 table caption {
+    line-height: 120%;
+    text-align:left;
+    color:#999;
+}
+.List_Tb3 table tr.altrow{
+    background: #FDFEF5;
+}
+.List_Tb3 table th {
+    text-align:left;
+    line-height: 165%;
+    white-space: nowrap;
+    vertical-align: middle;
+    padding: 2px 4px 2px 4px;
+    white-space: nowrap;
+    color: #fff;
+    font-weight: bold;
+    border-left:6px solid #65c8f2;
+    background-color:#3fa5cf;
+    position:relative;
+    background-image:none;
+    border-bottom:0px;
+    border-right:0px;
+    
+
+}
+
+
+.List_Tb3 table th .right_box {
+    width:80px;
+    float:right;
+    margin-top:-20px;
+}
+
+.List_Tb3 table td img {
+    margin: 0 3px;
+    cursor: pointer;
+}
+.List_Tb3 table td {
+    line-height: 1.8em; 
+    padding: 2px;
+    border: 1px dotted #65c8f2;
+    vertical-align:top;
+    text-align:left;
+}
+
+.List_Tb3 table td span{
+    color:#C00;
+    
+}
+
+
+
+.List_Tb3 table td.date{ text-align:center; }
+.List_Tb3 table td.number{ 
+   text-align:center;
+   color:#dd420c;
+}
+
+.List_Tb3 table td.center{ 
+   text-align:center;
+  
+   
+}
+.List_Tb3 table td a {
+    margin-right: 4px;
+    color:#EC4848;
+    text-decoration:underline;
+}
+.List_Tb3 table td a:hover {
+    text-decoration:underline;
+}
+
+.List_Tb3 .gray_line{
+    border:1px solid #CCC;
+    background-color:#E7E7E7;
+    padding-left:3px;
+    }
+
+/* ---------------------------------------.List_Tb_02----------- */
+.List_Tb_02 {
+    clear: both;    
+    width:auto;
+    text-align:left;
+    
+}
+.List_Tb_02 table { 
+    margin:5px ;
+    border-collapse: collapse;
+    border:1px solid #3fa5cf;
+    width:98%;
+        
+}
+
+.List_Tb_02 table th {
+    text-align:center;
+    line-height: 165%;
+    white-space: nowrap;
+    vertical-align: middle;
+    padding: 2px 4px 2px 4px;
+    white-space: nowrap;
+    color: #fff;
+    font-weight: bold;  
+    background-color:#3fa5cf;   
+    border:1px solid #ceebfe;
+}
+
+
+
+.List_Tb_02 table td {
+    line-height: 1.8em; 
+    padding: 2px;
+    border:1px solid #3fa5cf;
+    vertical-align:top;
+    text-align:left;
+    background-color:#FFF;
+}
+
+
+
+
+.List_Tb_02 table td.date{ text-align:center; }
+.List_Tb_02table td.number{ 
+   text-align:center;
+   color:#dd420c;
+}
+
+.List_Tb_02 table td.center{ 
+   text-align:center;
+  
+   
+}
+.List_Tb_02 table td a {
+    margin-right: 4px;
+    color:#EC4848;
+    text-decoration:underline;
+}
+.List_Tb_02 table td a:hover {
+    text-decoration:underline;
+}
+
+
+/* ---------------------------------------.List_Tb01----------- */
+.List_Tb_01 {
+    clear: both;    
+    width: auto;
+    text-align:left;
+    margin:5px;
+    
+}
+.List_Tb_01 table { 
+    margin: 5px 0px 5px 0px;
+    border-collapse: collapse;
+    border:2px solid #99D0E6;
+    background-color:#FFF;
+    width:100%;
+    
+        
+}
+.List_Tb_01 table caption {
+    line-height: 120%;
+    text-align:left;
+    color:#999;
+}
+.List_Tb_01 table tr.altrow{
+    background: #FDFEF5;
+}
+.List_Tb_01 table th {
+    text-align:right;
+    line-height: 165%;
+    white-space: nowrap;
+    vertical-align: middle;
+    padding: 2px 4px 2px 4px;
+    white-space: nowrap;
+    color: #036;
+    background-color:#CCE8F2;
+    border-bottom:1px dotted #65c8f2;
+    font-weight:normal;
+    
+}
+
+.List_Tb_01 table td.td_title {
+    text-align:left;
+    line-height: 165%;
+    white-space: nowrap;
+    vertical-align: middle;
+    padding: 2px 4px 2px 4px;
+    white-space: nowrap;
+    color: #333;    
+    background-color:#99D0E6;
+    border-bottom:1px dotted #FFF;
+    font-weight:normal;
+    border-left:6px solid #65c8f2;
+    
+}
+.List_Tb_01 table td img {
+    margin: 0 3px;
+    cursor: pointer;
+}
+.List_Tb_01 table td {
+    line-height: 1.8em;
+    padding: 3px;   
+    vertical-align:top;
+    text-align:left;
+    background-color:#D9EDF0;
+    border:1px dotted #65c8f2;
+    color:#333;
+    
+}
+
+.List_Tb_01 table td span{
+    color:#C00;
+    
+}
+
+
+
+.List_Tb_01 table td.date{ text-align:center; }
+.List_Tb_01 table td.number{ 
+   text-align:center;
+   color:#dd420c;
+}
+
+.List_Tb_01 table td.center{ 
+   text-align:center;
+  
+   
+}
+.List_Tb_01 table td a {
+    margin-right: 4px;
+    color:#3f2d12;
+}
+.List_Tb_01 table td a:hover {
+    text-decoration:underline;
+}
+
+
+/* ---------------------------------------.List_Tb04----------- */
+.List_Tb_04 {
+    clear: both;    
+    width: auto;
+    text-align:left;
+    margin-left:10px;
+    margin-top:5px;
+    
+}
+
+.List_Tb_04 table {
+    margin: 0px 0px 0px 0px;
+    border: 2px solid #387988;
+    background-color:#FFF;
+    width:99%;
+        
+}
+
+
+.List_Tb_04 table caption {
+    line-height: 120%;
+    text-align:left;
+    color:#999;
+}
+.List_Tb_04 table tr.altrow{
+    background: #FDFEF5;
+}
+.List_Tb_04 table th {
+    text-align:left;
+    line-height: 180%;
+    white-space: nowrap;
+    vertical-align: middle;
+    padding: 2px 4px 2px 4px;
+    white-space: nowrap;        
+    background-color:#99D0E6;   
+    font-weight:normal;     
+    background: url(../images/lpTb4_title_bg.gif) left top repeat-x;    
+    color:#FFF; 
+    border-bottom: 1px solid #387988;
+    
+}
+
+
+.List_Tb_04 table td {
+    line-height: 1.8em; 
+    padding: 3px;   
+    border-bottom: 1px solid #387988;
+    vertical-align:top;
+    text-align:left;
+    background-color:#ceebfe;
+        
+    
+}
+
+.List_Tb_04 table td span{
+    color:#C00;
+    
+}
+
+
+
+.List_Tb_04 table td.date{ text-align:center; }
+.List_Tb_04 table td.number{ 
+   text-align:center;
+   color:#dd420c;
+}
+
+.List_Tb_04 table td.center{ 
+   text-align:center;
+  
+   
+}
+.List_Tb_04 table td a {
+    margin-right: 4px;
+    color:#3f2d12;
+}
+.List_Tb_04 table td a:hover {
+    text-decoration:underline;
+}
+
+/* ---------------------------------------.List_Tb5----------- */
+.List_Tb5 {
+    clear: both;
+    width:98%;
+    margin-left:10px;
+    padding:15px;
+    background:#ccc;
+    
+}
+
+.List_Tb5 table {   
+    border-collapse: collapse;
+    border:0px;
+    background-color:#FFF;
+    
+        
+}
+.List_Tb5 table caption {
+    line-height: 120%;
+    text-align:left;
+    color:#999;
+}
+.List_Tb5 table tr.altrow{
+    background: #FDFEF5;
+}
+.List_Tb5 table th {
+    text-align:left;
+    line-height: 165%;
+    white-space: nowrap;
+    vertical-align: middle;
+    padding: 2px 4px 2px 4px;
+    white-space: nowrap;
+    color: #fff;
+    font-weight: bold;
+    background-color:#2E8DB6;
+    position:relative;
+    background-image:none;
+    border-bottom:0px;
+    border-right:0px;
+}
+
+
+.List_Tb5 table th .right_box {
+    width:80px;
+    float:right;
+    margin-top:-20px;
+}
+
+.List_Tb5 table td img {
+    margin: 0 3px;
+    cursor: pointer;
+}
+.List_Tb5 table td {
+    line-height: 1.8em; 
+    padding: 2px;
+    border: 1px dotted #65c8f2;
+    vertical-align:top;
+    text-align:left;
+}
+
+.List_Tb5 table td span{
+    color:#2E8DB6;
+    
+}
+
+
+
+.List_Tb5 table td.date{ text-align:center; }
+.List_Tb5 table td.number{ 
+   text-align:center;
+   color:#dd420c;
+}
+
+.List_Tb5 table td.center{ 
+   text-align:center;
+  
+   
+}
+.List_Tb5 table td a {
+    margin-right: 4px;
+    color:#EC4848;
+    text-decoration:underline;
+}
+.List_Tb5 table td a:hover {
+    text-decoration:underline;
+}
+
+.List_Tb5 .gray_line{
+    border:1px solid #CCC;
+    background-color:#E7E7E7;
+    padding-left:3px;
+    }
+    
+
+    

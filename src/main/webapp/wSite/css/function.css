@@ -1,0 +1,82 @@
+@charset "UTF-8";
+/*  友善列印 轉寄好友 回上一頁 回頁首gotop */
+.friendly {
+	text-align: left;
+	position: relative;
+	width: auto;
+	margin:0 0px 5px 0px;
+}
+
+.function {
+	text-align: right;
+	position: absolute;
+	right: 0px;
+	top:0;
+}
+.function li {
+	display: inline;	
+}
+.function .favorites {
+	background-image: url(../images/icon_favorites.gif);
+	background-repeat: no-repeat;
+	background-position: left 2px;
+	background-position: left 2px\9;
+	*background-position: left 0;
+	_background-position: left center;
+	padding:0 0 2px 19px;
+	border-style: none;
+	margin-right: 10px;
+}
+.function .print {
+	background-image: url(../images/icon_print.gif);
+	background-repeat: no-repeat;
+	background-position: left 2px;
+	background-position: left 3px\9;
+	*background-position: left 0;
+	_background-position: left center;
+	padding:0 0 2px 19px;
+	border-style: none;
+	margin-right: 10px;
+}
+.function .back {
+	background-image: url(../images/icon-up.gif);
+	background-repeat: no-repeat;
+	background-position: left 2px;
+	background-position: left 2px\9;
+	*background-position: left 0;
+	_background-position: left center;
+	padding:0 0 2px 19px;
+	margin-right: 10px;
+}
+.function .forward {
+	background-image: url(../images/icon_forward.gif);
+	background-repeat: no-repeat;
+	background-position: left 2px;
+	background-position: left 2px\9;
+	*background-position: left 2px;
+	_background-position: left center;
+	padding:0 0 2px 19px;
+	border-style: none;
+	margin-right: 10px;
+}
+.function .excel {
+	background-image: url(../images/icon_excel.gif);
+	background-repeat: no-repeat;
+	background-position: left 2px;
+	*background-position: left 1px;
+	_background-position: left center;
+	padding:0 0 2px 19px;
+	border-style: none;
+	margin-right: 10px;
+}
+.function .download {
+	background-image: url(../images/icon_download.gif);
+	background-repeat: no-repeat;
+	background-position: left 3px;
+	background-position: left 5px\9;
+	*background-position: left 4px;
+	_background-position: left center;
+	padding:0 0 2px 19px;
+	float: none;
+	margin-right: 10px;
+}

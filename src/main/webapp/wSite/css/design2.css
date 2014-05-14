@@ -1,0 +1,13 @@
+@charset "utf-8";
+/* CSS Document */
+@import url("custom.css");/*切換樣式設定(含字級與版型)*/
+.header {
+	height: 172px;
+	font-size:80%;
+	margin:0 0 6px 0;
+	background: #FFE1F0;
+	border: 1px solid #CA93CE;
+}
+
+.header h1 { margin:5px 0 0 15px; font-size: 150%;}
+

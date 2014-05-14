@@ -1,0 +1,243 @@
+@CHARSET "UTF-8";
+
+.varStyle {color:blue;}
+
+.ActionH4 {
+    padding-left:10px; 
+    margin-top:5px;
+    font-size:18px;
+    color:white;
+}
+
+.ActTb_01 {
+    clear: both;    
+    width: auto;
+    text-align:left;
+    margin:5px;
+}
+.ActTb_01_table {   
+    margin: 5px 0px 20px 0px;
+    border-collapse: collapse;
+    border:1px solid #99D0E6;
+    background-color:#FFF;
+    width:100%;
+}
+.ActTb_01_table caption {
+    line-height: 120%;
+    text-align:left;
+    color:#999;
+}
+.ActTb_01_table tr.altrow{
+    background: #FDFEF5;
+}
+.ActTb_01_table_th {
+    text-align:right;
+    line-height: 165%;
+    /*width:145px;*/
+    white-space: nowrap;
+    vertical-align: middle;
+    padding: 2px 10px 2px 4px;
+    white-space: nowrap;
+    color: #333;    
+    background-color:#C6DEFF;
+    border-bottom:1px dotted #FFF;
+    font-weight:normal; 
+    border-left:0px solid #65c8f2;
+}
+
+.ActTb_01_table td.td_title {
+    text-align:left;
+    line-height: 165%;
+    white-space: nowrap;
+    vertical-align: middle;
+    padding: 2px 4px 2px 4px;
+    white-space: nowrap;
+    color: #333;    
+    background-color:#99D0E6;
+    border-bottom:1px dotted #FFF;
+    font-weight:normal;
+    border-left:6px solid #65c8f2;
+    
+}
+.ActTb_01_table td img {
+    margin: 0 3px;
+    cursor: pointer;
+}
+.ActTb_01_table td {
+    line-height: 1.8em; 
+    padding: 3px;
+    border-top: 1px dotted #65c8f2;
+    vertical-align:top;
+    text-align:left;
+}
+
+.ActTb_01_table td span{
+    color: #000;
+    
+}
+
+.ActTb_01_table td.date{ text-align:center; }
+.ActTb_01_table td.number{ 
+   text-align:center;
+   color:#dd420c;
+}
+
+.ActTb_01_table td.center{ 
+   text-align:center; 
+}
+
+.ActTb_01_table td a {
+    margin-right: 4px;
+    color:#3f2d12;
+}
+.ActTb_01_table td a:hover {
+    text-decoration:underline;
+}
+
+
+.ActTb_02 {
+    clear: both;    
+    width: auto;
+    text-align:left;
+    margin:5px;
+}
+.ActTb_02_table {   
+    margin: 5px 0px 20px 0px;
+    border-collapse: collapse;
+    
+    width:100%;
+}
+.ActTb_02_table caption {
+    line-height: 120%;
+    text-align:left;
+    color:#999;
+}
+.ActTb_02_table tr.altrow{
+    background: #FDFEF5;
+}
+.ActTb_02_table_th {
+    text-align:left;
+    line-height: 165%;
+    white-space: nowrap;
+    vertical-align: middle;
+    padding: 2px 4px 2px 4px;
+    white-space: nowrap;
+    color: #fff;    
+    background-color:#3fa5cf;
+}
+
+.ActTb_02_table td.td_title {
+    text-align:left;
+    line-height: 165%;
+    white-space: nowrap;
+    vertical-align: middle;
+    padding: 2px 4px 2px 4px;
+    white-space: nowrap;
+    color: #333;    
+    background-color:#99D0E6;
+    border-bottom:1px dotted #FFF;
+    font-weight:normal;
+    border-left:6px solid #65c8f2;
+    
+}
+.ActTb_02_table td img {
+    margin: 0 3px;
+    cursor: pointer;
+}
+.ActTb_02_table td {
+    line-height: 1.8em; 
+    padding: 2px;
+    border-top: 1px dotted #65c8f2;
+    vertical-align:top;
+    text-align:left;
+}
+
+.ActTb_02_table td span{
+    color: #000;
+    
+}
+
+.ActTb_02_table td.date{ text-align:center; }
+.ActTb_02_table td.number{ 
+   text-align:center;
+   color:#dd420c;
+}
+
+.ActTb_02_table td.center{ 
+   text-align:center; 
+}
+
+.ActTb_02_table td a {
+    margin-right: 4px;
+    color:#3f2d12;
+}
+.ActTb_02_table td a:hover {
+    text-decoration:underline;
+}
+
+.action-icon-ok {
+    background:url(../images/icon-ok.png) 50% 50% no-repeat;
+    width:28px;
+    height:28px;
+}
+
+.action-icon-no {
+    background:url(../images/icon-no.png) 50% 50% no-repeat;
+    width:28px;
+    height:28px;
+}
+
+.action-icon-accept {
+    background:url(../images/icon-accept.png) 50% 50% no-repeat;
+    width:24px;
+    height:24px;
+    cursor:pointer;
+}
+
+.action-icon-warning {
+    background:url(../images/icon-warning.png) 50% 50% no-repeat;
+    width:24px;
+    height:24px;
+    cursor:pointer;
+}
+
+
+
+/*For Item Check*/
+.label_normal {
+   display:none;
+}
+
+.label_abnormal {
+    background:url(../images/icon-warning1.png) 0px 7px no-repeat;
+    padding-left:24px;
+    color:red;
+}
+
+.label_ok {
+    background:url(../images/icon-ok1.png) 0px 7px no-repeat;
+    padding-left:24px;
+    color:green;
+}
+
+/*For FORM Field*/
+.field_hidden {
+	display:none;
+}
+
+.div_center{
+	text-align:center;
+}
+
+.message_bar{
+	border-top:2px solid #A9E2F3; 
+	border-bottom:2px solid #A9E2F3; 
+	background-color:#FAFAFA; 
+	padding:5px 0px 5px 10px; 
+	margin-top:14px; 
+	height:22px;	
+}
+
+.noLineTable tbody>tr>td{
+	border-width: 0px;
+} 

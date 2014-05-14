@@ -1,0 +1,367 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*----------------------------------------------------------------- accesskey */
+.accesskey {
+	margin:0px 0 0; padding:0;
+	clear:both;
+	
+}
+.accesskey a {
+	color: #c4beaa;
+	-webkit-text-size-adjust:none; /*-加webkit後chrome才能辨識字級--*/
+	font-size: 0.8em;
+}
+.accesskey a:hover {
+	color: #900;
+	text-decoration:underline;
+}
+.category .accesskey a{
+	-webkit-text-size-adjust:none; /*-加webkit後chrome才能辨識字級--*/
+	font-size:0.6em;
+}
+
+h2 {
+	background: url(../images/h2_bg.gif) no-repeat 0px 0px;
+	padding:5px 0 5px 20px;
+	margin:0 0 5px 0;
+	color:#555;
+	clear:both;
+	font-size:1.25em;
+	font-weight:bold;
+}
+h2 span{ font-weight:bold;}
+h3 {
+	font-size: 1.25em;
+	line-height: 1.2em;
+	font-weight: normal;
+	color:#069;
+}
+
+h4 {
+	font-size: 1.05em;
+	color:#930;
+	margin:0 0 5px;
+	padding:0;
+	font-weight: normal;
+}
+h5 {
+	font-size: 1em;
+	color:#066;
+	margin:5px 0;
+	padding:0px;
+	font-weight: normal;
+	clear:both;
+}
+em{
+	color:#C60;
+	font-weight:bold;
+	font-style:normal;
+}
+.desc{
+	margin:2px 0;
+	color: #960;
+	line-height: 160%;
+}
+.desc em{ font-style:normal; font-weight: bold; color:#C30; padding:0 2px}
+.desc a{ text-decoration:underline;}
+blockquote p{ color:#960; margin:5px  auto; text-align: left;}
+
+
+/*----------------------------------------------------------------- path */
+.path {
+	margin: 10px auto 10px 0;
+	padding: 0px 0 0px 10px;
+	font-size:1em;
+	color: #426b9a;
+	text-align: left;
+	font-weight:bold;
+	background: url(../images/path_bg.gif) no-repeat 0px 5px;
+}
+
+.path a {
+	color: #999;
+	font-weight: normal;
+	text-decoration: none;
+}
+.path a:hover {
+	color: #C60;
+	text-decoration: underline;
+}
+.path img {
+	margin: 0 3px;
+}
+
+
+.aaa {
+	float: right;
+	margin: 5px 25px 0;
+}
+.aaa img {
+	border: 1px solid #038300;
+}
+/*----------------------------------------------------------------- */
+img {
+	border: none;
+}
+
+a{
+	color: #333;
+	text-decoration: none;
+}
+a:hover{
+	color: #900;
+	text-decoration:underline;
+}
+
+.aCenter, table td .aCenter {
+	text-align: center !important;
+}
+.aLeft, table td .aLeft{
+	text-align: left !important;
+}
+.aRight, table td .aRight{
+	text-align: right !important;
+}
+
+.blockquote{
+	color: #996600;
+	line-height: 20px;
+	margin:5px 10px 0 10px;
+	clear:both;
+}
+.dept{
+	color:#696;
+	margin:0 0 0 5px;
+	padding:0 0 0 3px;
+	border-left:1px solid #CCC;
+}
+.date{
+	color:#946006;
+	padding:0;
+	text-align: right;
+	margin-top: 2px;
+}
+.date em {
+	font-style: normal;
+	margin-right: 8px;
+}
+.cleardefault{
+	height:16px;
+	width:auto;
+	color:#6c6d03;
+	font-size:1em;
+	padding:4px 0 2px 4px;
+	margin:0 0 0px;
+	border:1px solid #ccc;	
+}
+textarea {
+	line-height: 150%;
+	border: 1px solid #999;
+	margin: 0;
+	padding: 3px 3px 2px;
+}
+inupt, table td inupt{ vertical-align:middle;}
+select {border: 1px solid #999; color: #333;}
+
+
+/*按鈕buttom*/
+.btnlog{
+	background: url(../images/btn_log.gif) repeat-x 0px 0px;
+	padding: 3px 8px 1px 8px;
+	margin:0 2px;
+	color:#960;
+	font-size:0.8em;
+	border:1px solid #d0c589;
+}
+
+.center .controlBtn{
+	text-align:center;
+	margin:0px auto;
+	padding:0px 0 0;
+	text-align:center;
+	width:100%;
+	position: absolute;
+	bottom:10px;
+}
+
+.btn_com {
+	background: url(../images/btn_com.gif) repeat-x 0 0;
+	margin: 0 2px;
+	color: #905706;
+	padding:5px 0px;
+	width: 116px;
+	border:0;
+	cursor:pointer;
+}
+.btn_renamed{
+	background: url(../images/btn_rename_bg.gif) repeat-x left top;
+	padding: 1px 6px;
+	padding: 3px 6px 1px\9;
+	*padding: 3px 3px 0;
+	border: 1px solid #8b9462;
+	line-height: normal;
+	margin: 0;
+	color: #333;
+	width: 150px;
+	cursor:pointer;
+}
+.btn_delete{
+	background: url(../images/btn_reset_bg.gif) repeat-x left top;
+	padding: 1px 6px;
+	padding: 3px 6px 1px\9;
+	*padding: 3px 3px 0;
+	border: 1px solid #ccc;	
+	line-height: normal;
+	margin: 0;
+	color: #333;
+	width: 150px;
+	cursor:pointer;
+}
+.btn_submit{
+	background: url(../images/btn_submit.gif) repeat-x 0 0;	
+	border:1px solid #A9843F;	
+	color: #000;
+	cursor:pointer;
+	margin:0 2px;
+	padding:4px 10px;
+}
+
+.btn_modify{
+	background: url(../images/btn_modify.gif) repeat-x 0 0;	
+	border:1px solid #B99731;	
+	color: #000;
+	cursor:pointer;
+	margin: 0 2px;
+	padding:4px 10px;
+}
+.btn_final{
+	background: url(../images/btn_final.gif) repeat-x 0 0;	
+	border:1px solid #afbe4a;	
+	color: #000;
+	cursor:pointer;
+	margin:0 2px;
+	padding:5px 10px;
+}
+
+.btn_reset {
+	background: url(../images/btn_submit.gif) repeat-x 0 0;	
+	border:1px solid #bbb;	
+	color: #000;
+	cursor:pointer;
+	margin: 0 2px;
+	padding:5px 10px;
+}
+.btn_go{
+	border:none;
+	width:45px;
+	margin:0 3px;
+	text-align:center;
+	background: url(../images/btn_go.gif) no-repeat 0px 0px;
+	padding:3px 0 2px 0px;
+	*padding:4px 0 2px 0px;
+	font-size: 100%;
+	vertical-align: middle;
+	color: #333;
+	cursor:pointer;
+}
+
+.btn{
+	color: #333333;
+	border: 1px solid #CCC;
+	text-align: center;
+	padding: 4px 8px 2px 8px;	
+	cursor:pointer;
+	vertical-align: 0px;
+	background: #FFF url(../images/btn_submit_bg.gif) repeat-x 0px top;
+}
+.btnHL{
+	color: #333333;
+	border: 1px solid #ceab50;
+	text-align: center;
+	padding: 4px 8px 2px 8px;	
+	cursor:pointer;
+	vertical-align: 0px;
+	background: #fff url(../images/btn_bg2.gif) repeat-x 0px top;
+}
+
+.btn_center img, .btn_center input{ vertical-align:middle;}
+/*------------------------------------------------substation*/
+
+/*----------------------------------------------------------------- more */
+
+input.text {
+	line-height: 20px;
+	font-size: 1em;
+	padding: 2px 2px 5px 2px;
+	margin: 0;
+	color:#555;
+	width:98%;
+	border: 1px solid #BBBBBB;
+	background: #FFFFFF;
+}
+
+
+input + img , select + img {
+	vertical-align: bottom;
+	border: none;
+}
+
+input.text2 {
+	width: 160px;
+	height: 1.5em;
+	border: 1px solid #ccc;
+	padding: 2px 3px 0;
+}
+input.text3 {
+	width: 60px;
+	height: 1.5em;
+	border: 1px solid #ccc;
+	padding: 2px 3px 0;
+}
+
+.form td select {
+	height: 1.8em;
+	
+}
+
+.note {
+	clear: both;
+	margin: 5px 0px 10px;
+	padding: 5px 15px;
+	line-height:160%;
+	color: #666;
+}
+.note li {
+	margin: 0 0 5px;
+	list-style: circle inside;
+}
+.note li img {
+	vertical-align: -20%;
+}
+.required{
+	color: #C00;
+	margin-right: 3px;
+}
+
+
+/*--------------------表格欄位預設位置 序號、時間----------------*/
+table th.date{ text-align:right; margin:0px;}
+table td.date{ color:#960; text-align:center; white-space:nowrap; }
+table th.number{text-align:center; width:5%; }
+table td.number{ text-align:center; color:#960;}
+
+
+/*--------------------表格欄位預設位置 左中右----------------*/
+.aRight, th.aRight, td.aRight{ text-align:right;}
+.aLeft, th.aLeft, td.aLeft{ text-align:left;}
+.aCenter, th.aCenter, td.aCenter{ text-align:center;}
+
+/*--------------------表格欄位預設位置 左中右----------------*/
+.btnRight{ float:right; margin:-25px 0 0 0; }
+.btnRight label{
+	color:#888;
+	padding:0px 0 0 10px;
+}
+.floatRight{ float:right;}
+.floatRight img{ vertical-align:middle; margin:0px; padding:0;}

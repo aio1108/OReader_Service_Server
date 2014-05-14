@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location">
+            <value>classpath:config.properties</value>
+        </property>
+    </bean>
+    
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" >
+			<value>${driverClassName}</value>
+		</property>
+		<property name="url"> 
+            <value>${url}</value> 
+        </property>
+		<property name="username"> 
+            <value>${username}</value> 
+        </property> 
+        <property name="password"> 
+            <value>${key}</value> 
+        </property>
+		<property name="initialSize" value="10" />
+		<property name="maxActive" value="30" />
+		<property name="maxIdle" value="100" />
+		<property name="maxWait" value="3000" />
+	</bean>
+	
+	<bean id="dataSourceGIP" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" >
+			<value>${driverClassName}</value>
+		</property>
+		<property name="url"> 
+            <value>${urlGIP}</value> 
+        </property>
+		<property name="username"> 
+            <value>${username}</value> 
+        </property> 
+        <property name="password"> 
+            <value>${key}</value> 
+        </property>
+		<property name="initialSize" value="10" />
+		<property name="maxActive" value="30" />
+		<property name="maxIdle" value="100" />
+		<property name="maxWait" value="3000" />
+	</bean>
+		
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    
+	<!-- <bean id="environmentVariablesConfiguration" class="org.jasypt.encryption.pbe.config.EnvironmentStringPBEConfig">
+		<property name="algorithm" value="PBEWithMD5AndDES" />
+		<property name="passwordEnvName" value="APP_ENCRYPTION_PASSWORD" />
+	</bean> -->
+	<!--                                                                      -->
+	<!-- The will be the encryptor used for decrypting configuration values.  -->
+	<!--                                                                      -->
+	<!-- <bean id="configurationEncryptor" class="org.jasypt.encryption.pbe.StandardPBEStringEncryptor">
+		<property name="config" ref="environmentVariablesConfiguration" />
+	</bean> -->
+	
+</beans>
+

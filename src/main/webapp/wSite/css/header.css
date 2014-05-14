@@ -1,0 +1,40 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*--------------------------------------header -------------------*/
+
+.header {
+	position:relative;
+	height:117px;
+	padding:0;
+	background: #FFF url(../images/header_bg.jpg) no-repeat 0px 0px;
+}
+.header h1 {
+	font-style: normal;
+	font-weight: normal;
+	position: absolute;
+	top:0px;
+	left:27px;
+}
+.header h1 img{ width:300px; height:70px;}
+
+/*----------------------------------time*/
+.time{
+	position:absolute;
+	top:85px;
+	left:30px;
+	color: #095a94;
+	padding:0 0 0 22px;
+	background: url(../images/icon_time.png) no-repeat 0px 1px;
+}
+.time em{color:#095a94; font-weight:normal;}
+/*---------------------------------------nav ------------------*/
+.header .user {
+	position: absolute;
+	bottom:10px;
+	right:8px;
+	color:#333;
+}
+
+.header .user  em{ font-weight:normal; color:#333;}
+.header .user img{ vertical-align: -5PX; margin:0 2px;}

@@ -1,0 +1,169 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*--左側垂直 Vertical Menu Start--*/
+.leftbg .menu{
+	margin:0px 0px 10px 0px;
+	padding:0px 1px 0 0px;	
+	clear:both;
+	border-bottom:1px solid #ccc;
+}
+/*---ul---*/
+.leftbg .menu ul{ margin:0; padding:0; }
+.leftbg .menu ul ul{
+	padding:0px 0 5px 0;
+	margin:0px 0px 0px 0px;
+	list-style-type: none;
+	border-top:1px solid #ccc;
+}
+
+/*---li---*/
+.leftbg .menu li {
+	display:block;
+	line-height: 1.5em;
+	margin:0 0 0px 0;		
+	background: #fff url(../images/menuli_bg.gif) repeat-x 0px 0px;
+}
+.leftbg .menu li li{	
+	margin:0 0 0px 0px;
+	padding:5px 0 0 12px;
+	border:0px;
+	display:block;
+	line-height:1.8em;	
+	border-bottom:1px dotted #ccc;
+	background:#fff url(../images/icon_menu2.gif) no-repeat 0px 5px;
+}
+
+
+/*---a---*/
+.leftbg .menu li a{
+	font-weight: bold;
+	color: #384d68 ;
+	font-size: 1.2em;
+	text-decoration: none;
+	display:block;
+	margin:0 0 0px 0;
+	padding:8px 0 5px 22px;
+	border-top:1px solid #ccc;
+	background: url(../images/arrow.gif) no-repeat 6px 10px;
+}
+.leftbg .menu li li a{
+	color: #069;
+	font-size: 1em;
+	border:0px;
+	line-height:1.5em;
+	font-weight: normal;
+	padding:0px 0 0px 15px;
+	background: url(../images/arrow2.gif) no-repeat 4px 5px;
+}
+
+
+/*---a:hover---*/
+.leftbg .menu li a:hover, .leftbg .menu li.here a:hover{
+	color: #FFF;
+	display:block;
+	background:#384d68;
+	
+}
+.leftbg .menu li li a:hover, .leftbg .menu li.here li a:hover{
+	background: url(../images/arrow2.gif) no-repeat 4px 5px;
+	margin:0 2px 0 0;
+	color:#C60;
+	text-decoration:underline;
+}
+.leftbg .menu li.here{border-top:1px solid #ccc;}
+.leftbg .menu li.here a{
+	display:block;
+	background: url(../images/li-arrow.gif) no-repeat 155px 10px;
+	padding:7px 0 5px 17px;
+	
+}
+.leftbg .menu li.here li a{background: url(none) no-repeat 0px 0px; padding:0; }
+.leftbg .menu li li.here{background: url(../images/icon_menu2_hover.gif) no-repeat 0px 5px;}
+.leftbg .menu li li.here a{
+	border:0px;
+	color:#995a06;
+	background: url(none) no-repeat 0px 0px;
+}
+
+.leftbg .menu li a img{ vertical-align:middle; }
+
+/*-----------------------catalog-*/
+.catalog{
+	background: url(../images/catalog_bg.jpg) no-repeat 0px 0px;
+	margin:0 20px 15px 0px;
+	width:190px;
+}
+.catalog h2{
+	color:#615325;
+	margin:0px;
+	padding:32px 0 10px 50px;
+	background: url(../images/catalog_h2bg.gif) no-repeat 20px 25px;
+}
+.catalog ul{
+	margin:0px 20px 20px 25px; padding:0;
+}
+.catalog_view ul{
+	margin:0px 10px 5px 10px;
+	padding:0;	
+}
+.catalog ul ul, .catalog_view ul ul{
+	margin:5px 0px 5px 15px;
+	padding:0;
+}
+.catalog li, .catalog_view li{
+	line-height:1.8em;
+	font-size:1.1em;
+	margin:0;
+	
+}
+.catalog li li, .catalog_view li li{
+	font-size:0.8em;
+	border:0;
+	line-height:1.8em;
+}
+.catalog li a, .catalog_view li a{
+	border-bottom:1px dotted #8a805f;
+	background: url(../images/icon03.gif) no-repeat 5px 10px;
+	padding: 0 0 0 12px;
+	display:block;
+	
+}
+.catalog li li a, .catalog_view li li a{
+	color:#800000;
+	border:0;
+	background: url(../images/icon03.gif) no-repeat 0px 5px;
+	padding: 0 0 0 12px;	
+}
+.catalog_view li li.here a{ color: #C00; font-weight:bold; text-decoration: underline;}
+.catalog .foot{
+	background: url(../images/catalog_footbg.jpg) no-repeat 0px bottom;
+	height:20px;
+}
+
+.catalog_view{
+	margin:0px 20px 20px 5px;
+	border:1px solid #c8c3b1;
+	background-color:#faf4e3;
+	padding:10px;
+}
+.catalog_view h2{
+	color:#8e8053;
+	margin:0;
+	padding:0 0 0 15px;
+	background: url(../images/icon02.gif) no-repeat 2px 3px;
+}
+.catalog_view h3{
+	color:#6c3f05;
+	padding:4px 3px 2px 4px;
+	font-size:1.1em;
+	margin:5px 0 5px 3px;
+	font-weight:bold;
+	background-color:#FFF;
+	border:1px solid #d7cdaf;
+}
+
+
+
+
+

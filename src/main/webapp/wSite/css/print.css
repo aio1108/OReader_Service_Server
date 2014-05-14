@@ -1,0 +1,11 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body div {
+	color: #000000;
+}
+.search , .friendly , .leftbg , .rightbg, .footer , .menu, .top{
+	visibility: hidden;
+	display: none;
+}
+

@@ -1,0 +1,142 @@
+@charset "utf-8";
+/* CSS Document */
+
+.form {
+	margin: 0;
+	padding: 0;	
+	text-align:center;
+	
+}
+.annotate{ margin:0 0 0 30px; color:#333; line-height:1.5em;}
+.annotate ol{
+	margin:0 0 0 30px;
+}
+.annotate ol li{list-style: decimal;}
+.form .rowTb , .form .rowTb table table{
+	clear: both;
+	margin: 5px 0px 20px 20px;
+	padding: 0;
+	border-collapse: collapse;
+	width: 97%;
+	line-height: 165%;
+	border:1px solid #e2ddcc;
+	border-bottom:0px;
+}
+.form .rowTb table, .form .rowTb table td, .form .rowTb th th{ border:0; background: #FFF;}
+.form .rowTb caption {
+	text-align: left;
+}
+.form .rowTb th {
+	padding: 4px;
+	font-weight: normal;
+	white-space:nowrap;
+	color: #000;
+	width:20%;
+	text-align: right;
+	border-bottom: 1px solid #e2ddcc;
+	border-right: 1px solid #e2ddcc;
+	background: #f5f4e3;
+}
+.form .rowTb td, .form .rowTb table table td{
+	vertical-align: top;
+	padding: 4px;
+	border-bottom: 1px solid #e2ddcc;
+	border-right: 1px solid #e2ddcc;
+}
+
+/*------------------------------------------rowTb2 */
+.form .rowTb2 , .form .rowTb2 table table{
+	clear: both;
+	margin: 0px 0px 20px 20px;
+	padding: 0;
+	width:98%;
+	border-collapse: collapse;
+	line-height: 165%;
+	background-color:#FFF;
+	
+}
+.form .rowTb2 table, .form .rowTb2 table td, .form .rowTb2 th th{ border:0;}
+.form .rowTb2 caption {
+	text-align: left;
+}
+.form .rowTb2 th {
+	padding: 4px;
+	font-weight: normal ;
+	color: #000;
+	width:20%;
+	text-align: right;
+	
+}
+.form .rowTb2 td, .form .rowTb2 table table td{
+	vertical-align: top;
+	padding: 4px;
+}
+
+.form .rowTb2 td img {
+	vertical-align:middle;
+}
+.form .rowTb2 td a{ text-decoration:underline; } 
+.form .colTb tr.altrow, .form .rowTb tr.altrow, .form .rowTb2 tr.altrow{
+	background: #FBFAEC;
+}
+/*-------boxbor-------*/
+.form .boxbor{ margin:10px 30px; background-color:#eaf4fb; border:3px solid #a8c7e4; padding:10px; text-align:center;}
+.form .boxbor table{ width:80%; margin:0 auto;}
+.form .boxbor table td, .blockBorder table th{ padding:4px; }
+.form .boxbor table th{ width:20%; text-align:right; font-weight: bold; color:#384d68; }
+
+
+/*------------------------------------------form colTb */
+
+.form .colTb {
+	clear: both;
+	margin: 10px 0px 20px 20px;
+	padding: 0;
+	border-collapse: collapse;
+	width: 97%;
+	line-height: 165%;
+	border:1px solid #cfdff1;
+	border-bottom:0px;
+}
+#container .tabpanel .tabpanel .colTb, #container .tabpanel .tabpanel .rowTb { margin:10px 0; width: 100%;}
+.form .colTb table, .form .colTb table td, .form .colTb th th{ border:0; background: #FFF;}
+.form .colTb caption {
+	text-align: left;
+}
+.form .colTb th {
+	padding: 4px;
+	font-weight: normal;
+	white-space:nowrap;
+	color: #fff;
+	text-align:left;
+	border-bottom: 1px solid #cfdff1;
+	border-right: 1px solid #cfdff1;
+	background: #3b6ea8;
+}
+.form .colTb td, .form .colTb table table td{
+	vertical-align: top;
+	padding: 4px;
+	color:#555;
+	border-bottom: 1px solid #cfdff1;
+	border-right: 1px solid #cfdff1;
+}
+
+.form .colTb td img {
+	vertical-align:middle;
+}
+.form .colTb td a ,.form .rowTb td a{
+	text-decoration:underline;
+	color:#36C;
+} 
+.form .colTb td a:hover ,.form .rowTb td a:hover{  color: #C60;} 
+.form .rowTb tr.altrow{
+	background: #FBFAEC;
+}
+.form ul.list { margin:0px 10px 15px 30px; padding:0; color:#666; float:left;}
+.form ul.list li{
+	line-height:1.6em;
+	padding:0 0 0 12px;
+	background: url(../images/arrow2.gif) no-repeat 0px 5px;
+}
+.form ul.list li em{ color: #960; font-size:1.2em;}
+.form .capturePic{ clear:both; float:right; margin:0px 0 -35px;}

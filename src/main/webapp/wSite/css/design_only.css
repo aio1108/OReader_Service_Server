@@ -1,0 +1,11 @@
+@charset "utf-8";
+@import url("reset.css");/*內容頁*/
+@import url("common.css");/*共用樣式表*/
+@import url("layout.css");/*主版型*/
+@import url("header.css");/*標頭*/
+@import url("footer.css");/*標尾*/
+@import url("mp.css");/*首頁共用樣式表*/
+
+@import url("cp_only.css");/*首頁共用樣式表*/
+
+@import url("action.css");

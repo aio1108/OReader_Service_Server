@@ -1,0 +1,331 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+/*------------------------------------------------.headline */
+.headline{
+    clear:both;     
+    margin:0px 5px 5px 5px;     
+    width:auto; 
+}
+
+.headline .rss{
+    float:right;
+    margin:-25px 5px 0 0;
+}
+.headline h2.survey{
+    background-image: url(../images/h.main .ad_survey.gif);
+    background-repeat: no-repeat;
+    background-position: 0px top;
+    margin:0px;text-indent: -5000px;
+    height:35px;
+}
+.headline .body{        
+    clear:both; 
+    .main .adding:0 0 0 5px;
+    
+}
+.headline .body .article{
+    .main .adding:5px;  
+    margin:15px 0 10px 0;   
+    background-color:#eee;
+    overflow:hidden; /*--設hidden firefox才能讓body有block效果----*/
+    clear:both;
+}
+.headline .body .article .image{        
+    float:left;
+    margin:0 5px 0; 
+    background-color:#ccc;
+}
+.headline .body .article .image img{width:145px; .main .adding:1px; border:1px solid #CCc;}
+
+.headline .body .article h3{
+    margin:5px 0;
+    clear:none;
+    
+}
+.headline .body .article h3 a{
+    font-weight:bold;
+    color: #099;
+    text-decoration: underline;
+    
+    
+}
+.headline .body .article p{
+    color: #444;
+    margin:0px;
+    .main .adding:0px;
+    overflow:hidden; /*--ie8文字可以與圖分開---*/
+    _float:left;     /*--ie6文字可以與圖分開---*/   
+}
+.headline .body .article h3 .dept{font-size:90%; }
+.headline .body .article h3 .date{font-size:70%; }
+
+
+.headline .body ul{
+    margin:10px 0px 0px 5px;
+    background-image: none;
+}
+.headline .body li {
+    color: #484a4c;
+    display:block;
+    clear:both; 
+    line-height:16px;
+    text-align: justify;
+    .main .adding:0px 0 0px 15px;
+    background: url(../images/icon_pink.gif) no-repeat 0px 2px;
+    border-bottom: 1px dotted #a6a7a7;
+    padding-left:18px;
+    padding-bottom:2px;
+    padding-top:3px;
+}
+
+.headline .body li a{
+    color: #484a4c;
+}
+
+.headline .body li a:hover{
+    color: #5f1a41;
+}
+
+
+.headline .body li label{
+    color: #666666;
+}
+.headline .body .detail a{
+    text-decoration:underline;
+}
+.headline .body li .detail{
+    background: url(../images/icon_arrow.gif) no-repeat 0px 1px;
+    .main .adding-left:6px;
+    margin-left:5px;}
+
+.headline .body li .hits {
+    color: #666666;
+    margin:0 0 0 5px;
+    .main .adding-left:13px;
+    background: url(../images/icon_hits.gif) no-repeat 0px center;
+}
+
+
+    
+    
+
+
+
+
+
+
+
+
+.mp_news{
+    margin:10px 10px 10px 30px ;    
+    }
+
+/* ---------------------------------------lpTb3---------- */
+.lpTb3 {
+    clear: both;    
+    width: 100%;
+    text-align:center;  
+}
+.lpTb3 table {
+    width: 100%;
+    margin: 5px 0px 10px 0px;
+    border-collapse: collapse;
+    border:2px solid #387988;   
+}
+.lpTb3 table caption {
+    line-height: 120%;
+    text-align:left;
+    color:#666;
+    font-weight:bold;
+    
+}
+.lpTb3 table tr.altrow{
+    background: #FDFEF5;
+}
+.lpTb3 table th {
+    text-align:left;
+    line-height: 165%;
+    white-space: nowrap;
+    vertical-align: middle;
+    padding: 2px 4px 2px 4px;
+    white-space: nowrap;
+    color: #fff;    
+    font-weight: bold;
+    border-right:1px solid #387988;
+    border-bottom:2px solid #387988;
+    background-image:url(../images/lpTb3_title_bg.gif); 
+    background-repeat:repeat-x;
+    background-position:left top;
+}
+.lpTb3 table th img {
+    margin: 0 3px;
+    cursor: pointer;
+}
+.lpTb3 table td {
+    line-height: 220%;
+    vertical-align: baseline;
+    padding: 4px;
+    border-top: 1px solid #387988;  
+}
+.lpTb3 table td.date{ text-align:center; }
+.lpTb3 table td.number{ 
+   text-align:center;
+   color:#dd420c;
+}
+
+.lpTb3 table td.center{ 
+   text-align:center;
+  
+   
+}
+.lpTb3 table td a {
+    margin-right: 4px;
+    color:#06c;
+}
+.lpTb3 table td a:hover {
+    text-decoration:underline;
+}
+
+.lpTb3 table td.img {
+    margin: 0 3px;
+    cursor: pointer;
+    vertical-align:top;
+    text-align:center;
+}
+
+
+/* ---------------------------------------lpTb4---------- */
+.lpTb4 {
+    clear: both;
+    width:100%;    
+    
+    
+}
+.lpTb4 table {
+    width: 98%;
+    margin-top: 10px;
+    margin-left: 10px;
+    border-collapse: collapse;
+    border:2px solid #387988;   
+}
+.lpTb4 table caption {
+    line-height: 120%;
+    text-align:left;
+    color:#666;
+    font-weight:bold;
+    
+}
+.lpTb4 table tr.altrow{
+    background: #FDFEF5;
+}
+.lpTb4 table th {
+    text-align:left;
+    line-height: 165%;
+    white-space: nowrap;
+    vertical-align: middle;
+    padding: 2px 4px 2px 4px;
+    white-space: nowrap;
+    color: #fff;    
+    font-weight: bold;
+    border-right:1px solid #387988;
+    border-bottom:2px solid #387988;
+    background-image:url(../images/lpTb3_title_bg.gif); 
+    background-repeat:repeat-x;
+    background-position:left top;
+}
+.lpTb4 table th a {
+    color:#fff;
+}
+.lpTb4 table th img {
+    margin: 0 3px;
+    cursor: pointer;
+}
+.lpTb4 table td {
+    line-height: 220%;
+    vertical-align: baseline;
+    padding: 4px;
+    border-top: 1px solid #387988;  
+}
+.lpTb4 table td.date{ text-align:center; }
+.lpTb4 table td.number{ 
+   text-align:center;
+   color:#dd420c;
+}
+
+.lpTb4 table td.center{ 
+   text-align:center;
+  
+   
+}
+.lpTb4 table td a {
+    margin-right: 4px;
+    color:#06c;
+}
+.lpTb4 table td a:hover {
+    text-decoration:underline;
+}
+
+.lpTb4 table td.img {
+    margin: 0 3px;
+    cursor: pointer;
+    vertical-align:top;
+    text-align:center;
+}
+
+.lpTb4 .bg {
+    background-color:#8CC8BD;
+    
+}
+
+
+/*--------------------------------------------------------------------------------[ login ]-----*/
+.login{
+    margin:0px;
+    padding:0;
+    display:block;
+    width:250px;
+    }
+.login .headline{
+    height:13px;
+    margin:0px;
+    padding:5px 0 5px 0;
+    background: url(../images/lpTb3_title_bg.gif) left top repeat-x;
+    font-size:16px;
+    color:#FFF;
+    display:block;
+    border:2px solid #248aaa;
+    width:250px;
+    text-align:center;
+    
+}
+
+.login .body{
+    background-color:#ceebfe;
+    margin:0px;
+    padding:10px;
+    text-align:left;
+    display:block;
+    overflow:hidden;
+    border:2px solid #248aaa;
+    width:230px;
+}
+.login .body span{
+    line-height:1.6em;
+    vertical-align: super;
+    color:#C30; 
+}
+.login .body ul{
+    border-top:1px dotted #FFF;
+    margin-top:3px;
+    padding-top:7px;
+    }
+.login .body ul li{
+    display:inline; 
+    padding:0 15px 0 20px;
+    }
+.login .body ul li a{
+    color:#584b38;
+    text-decoration: underline;
+    }

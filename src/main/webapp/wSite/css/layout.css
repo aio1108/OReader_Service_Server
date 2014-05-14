@@ -1,0 +1,86 @@
+@charset "utf-8";
+/*------------------------------*/
+body {
+	margin: 0px auto;
+	padding: 0px;
+	text-align: center;
+	color: #444444;
+	font-family:"新細明體";
+	font-size: 0.8em;
+	background-color:#FFF;
+}
+.wrap{ 
+	width:977px;
+	margin:0 auto;
+	clear:both;
+	line-height:1.65em;
+	border-left:1px solid #ccc;
+	border-right:1px solid #ccc;
+	position:relative;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	_font-family: "新細明體";
+}
+.top{ margin:0 auto; padding:0; }
+
+/*--hide column--*/
+.hidden {
+	display: none;
+	visibility: hidden;
+}
+
+.clear {
+	border-collapse:collapse;
+	clear: both;
+	margin:0 0 5px 0;
+	width:100%;
+}
+
+
+/*----------------------------------------------------------------- Layout */
+.layout {
+	clear: both;
+	width:977px;
+	font-size: 1em;
+	border-collapse: collapse;
+	padding: 0;
+	margin: 0;
+	background:#fff url(../images/layoutbg.gif) repeat-y 0px 0px;
+}
+.layout .leftbg {
+	width: 175px;
+	height:450px;
+	vertical-align: top;
+	text-align: left;
+	background-color:#eee;
+	padding: 10px 0px 10px 0px;
+	border-right:1px solid #ddd;
+}
+
+.layout .center{
+	vertical-align: top;
+	text-align: left;	
+	padding: 0px 30px 50px 10px;
+	position:relative;
+}
+.layout .center .mp{ margin:-7px 0 0;}
+.layout .rightbg {
+	vertical-align: top;
+	width: 190px;
+	text-align: center;
+	padding: 0px 5px 10px 10px;
+}
+
+
+/*中欄兩欄*/
+.leftblock{
+	padding: 0 10px 0px 5px;
+	vertical-align: top;
+}
+.rightblock {
+	padding: 0 0px 0px 10px;
+	vertical-align: top;
+}
+
+.col3block{ width:33%; padding:0 5px 0 0px; vertical-align:top; margin:0 1px 10px;}
+
+

@@ -1,0 +1,95 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+
+/*------------------------------------------------fontSet*/
+.header .fontSet{
+	display:inline;
+	z-index: 12;
+	position: absolute;
+	top:3px;
+	right:3px;	
+}
+
+
+/*---------------------------------------custom*/
+
+
+.custom .fontSet {
+	color: #000;
+	width:140px;
+	float:left;	
+}
+.custom .fontSet span { 
+	color: #000; 
+	float:left; 
+	padding:5px 0px 0px 0px; 
+	margin:0 5px 0;
+	font-size:14px;
+	font-weight:bold;
+}
+.custom .fontSet ul {
+	margin:0px ;
+	padding:0;
+}
+.custom .fontSet li {
+	display:inline;
+}
+.custom .fontSet li img {
+	height: 20px;
+	width: 20px;
+	border:0px;
+	padding-bottom:2px;
+}
+
+
+/*--------------------fontSet----------------------*/
+.custom .fontSet li.fontS a {
+	background-image: url(../images/fontS.gif);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	
+}
+.custom .fontSet li.fontS a:hover {
+	background-image: url(../images/fontS_hover.gif);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+}
+.custom .fontSet li.fontS a.here {
+	background-image: url(../images/fontS_hover.gif);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	
+}
+.custom .fontSet li.fontM a {
+	background-image: url(../images/fontM.gif);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+}
+.custom .fontSet li.fontM a:hover {
+	background-image: url(../images/fontM_hover.gif);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+}
+.custom .fontSet li.fontM a.here {
+	background-image: url(../images/fontM_hover.gif);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+}
+.custom .fontSet li.fontL a {
+	background-image: url(../images/fontL.gif);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+}
+.custom .fontSet li.fontL a:hover {
+	background-image: url(../images/fontL_hover.gif);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+}
+.custom .fontSet li.fontL a.here {
+	background-image: url(../images/fontL_hover.gif);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+}
+

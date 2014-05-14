@@ -1,0 +1,212 @@
+@charset "utf-8";
+
+.page {
+	padding: 2px 0px;
+	text-align: center;
+	vertical-align: middle;
+	clear:both;
+}
+.page span {
+	vertical-align: middle;
+	text-align: left;
+	margin-left: 4px;
+}
+.page span.red {
+	color: #C60;
+}
+.page em {
+	margin-left: 4px;
+	margin-right: 4px;
+	font-style: normal;
+	color: #964108;
+}
+.page .selectPage{ display:inline; }
+.page select {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #666666;
+	margin: 0;
+	padding: 0;
+	vertical-align: middle;
+}
+
+.page ul {
+	margin: 0;
+	padding: 0;
+	display: inline;
+}
+.page li {
+	display: inline;
+	vertical-align:middle;
+	margin: 0px 1px;
+}
+.page a {
+	color: #7b7158;
+	text-decoration: none;
+	text-align: center;
+	display: inline;
+	margin: 0px;
+	padding: 0px 1px 0 0;
+	text-decoration: underline;
+}
+.page li a:hover {
+	color: #990000;
+	
+}
+.page li.here {
+	display: inline;
+	text-align: center;
+	color: #FFF;
+	background: #C60;
+	padding: 0 3px;
+}
+
+.page li.prevten {
+	vertical-align: middle;
+	margin: 0;
+	padding: 0;
+}
+.page li.prevten img {
+	width: 45px;
+	height: 15px;
+	vertical-align: middle;
+	
+}
+.page li.prevten a {
+	margin: 0;
+	padding: 0;
+	background: url(../images/prevnext.gif) no-repeat 0px 2px;
+}
+.page li.prevten a:hover {
+	background:#F3F3F3 url(../images/prevnext_hover.gif) no-repeat 0px 2px;
+}
+.page li.first {
+	vertical-align: middle;
+	margin: 0;
+	padding: 0;
+}
+.page li.first img {
+	width: 11px;
+	height: 15px;
+	vertical-align: middle;
+}
+.page li.first a {
+	margin: 0;
+	padding: 0;
+	background: url(../images/first.gif) no-repeat left center;
+}
+.page li.first a:hover {
+	margin: 0px;
+	padding: 0px;
+	background: #F3F3F3 url(../images/first_hover.gif) no-repeat left center;
+}
+.page li.prev {
+	vertical-align: middle;
+	margin: 0;
+	padding: 0;
+}
+.page li.prev img {
+	width: 7px;
+	height: 15px;
+	vertical-align: middle;
+}
+
+.page li.prev a {
+	margin: 0px;
+	padding: 0px;
+	background: url(../images/prev.gif) no-repeat left center;
+}
+.page li.prev a:hover {
+	background: #F3F3F3 url(../images/prev_hover.gif) no-repeat left center;
+}
+.page li.next {
+	vertical-align: middle;
+	margin: 0;
+	padding: 0;
+}
+.page li.next img {
+	width: 7px;
+	height: 15px;
+	vertical-align: middle;
+}
+
+.page li.next a {
+	margin: 0px;
+	padding: 0px;
+	background: url(../images/next.gif) no-repeat left center;
+}
+.page li.next a:hover {
+	background: #F3F3F3 url(../images/next_hover.gif) no-repeat left center;
+}
+.page li.nextten {
+	vertical-align: middle;
+	margin: 0;
+	padding: 0;
+}
+.page li.nextten img {
+	width: 45px;
+	height: 15px;
+	vertical-align: middle;
+}
+.page li.nextten a {
+	background: url(../images/nextten.gif) no-repeat 0px 2px;
+}
+.page li.nextten a:hover {
+	background: #F3F3F3;
+	background: url(../images/nextten_hover.gif) no-repeat 0px 2px;
+}
+.page li.last {
+	vertical-align: middle;
+	margin: 0;
+	padding: 0;
+}
+.page li.last img {
+	width: 11px;
+	height: 15px;
+	vertical-align: middle;
+}
+
+.page li.last a {
+	margin: 0px;
+	padding: 0px;
+	background: url(../images/last.gif) no-repeat left center;
+}
+.page li.last a:hover {
+	background: #F3F3F3 url(../images/last_hover.gif) no-repeat left center;
+}
+.page .condition {
+	background: url(../images/condition_icon.gif) no-repeat left center;
+	padding-left: 20px;
+	text-align: right;
+	vertical-align: middle;
+	margin-left: 20px;
+}
+
+
+/*---------------page2 ------------*/
+.page2 {
+	text-align: center;
+	margin-top: 8px;
+	margin-bottom: 8px;
+}
+.page2 ul {}
+.page2 ul li {
+	display: inline;
+	margin: 0px 8px;
+	padding: 0px;
+	color: #FFFFFF;
+}
+.page2 ul li.prev, .page2 ul li.next {
+	border: 3px double #E0F870;
+	padding: 3px 13px 1px;
+	background: #8AA609;
+	color: #FFFFFF;
+}
+.page2 ul li.prev a, .page2 ul li.next a {
+	color: #FFFFFF;
+}
+.page2 ul li.prev a:hover, .page2 ul li.next a:hover {
+	color: #FFFF00;
+}
+
+/*-------------------------------------------------------------------------------------------------------*/

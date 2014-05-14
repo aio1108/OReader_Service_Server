@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<menu>
+	<item id="0" text="首頁">
+		<userData name="action">Control?function=IndexPage</userData>
+    </item>
+	<item id="2" text="建檔審查作業">		
+		<item id="2_1" text="DEMO 1" img="select_all.gif" imgdis="select_all_dis.gif">
+			<userData name="action">Control?function=RunCase</userData>
+		</item>
+		<item id="2_2" text="DEMO 2" img="select_all.gif" imgdis="select_all_dis.gif">
+			<userData name="action">Control?function=RunCase</userData>
+		</item>
+		<item id="2_3" text="DEMO 3" img="select_all.gif" imgdis="select_all_dis.gif">
+			<userData name="action">Control?function=RunCase</userData>
+		</item>
+    </item>
+
+</menu>
