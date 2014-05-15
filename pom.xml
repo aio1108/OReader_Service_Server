@@ -13,6 +13,8 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	<spring.version>3.0.5.RELEASE</spring.version>
+	<tomcat.maven.plugin>2.2</tomcat.maven.plugin>
+	<test.embedserver.port>8888</test.embedserver.port>
   </properties>
   
 	 <build>
@@ -67,6 +69,15 @@
 					<targetJdk>1.6</targetJdk>
 				</configuration>
 			</plugin>
+			<!-- <plugin>
+		        <groupId>org.apache.tomcat.maven</groupId>
+		        <artifactId>tomcat7-maven-plugin</artifactId>
+		        <version>${tomcat.maven.plugin}</version>
+		        <configuration>
+			    	http port
+			    	<port>${test.embedserver.port}</port>
+			    </configuration>
+        	</plugin> -->
 		</plugins>
 		<resources>
 			<resource>
@@ -185,15 +196,15 @@
 		<version>16.0.1</version>
 	</dependency>
 	
+	<dependency>
+		<groupId>xom</groupId>
+		<artifactId>xom</artifactId>
+		<version>1.2.5</version>
+	</dependency>
+	
   </dependencies>
   
 	<repositories>
-		<repository>
-			<snapshots />
-			<id>hyweb.snapshots</id>
-			<name>hyweb-libs-snapshot</name>
-			<url>http://10.10.4.91:8183/artifactory/libs-snapshot-local</url>
-		</repository>
 
 		<repository>
 			<id>com.springsource.repository.bundles.release</id>
@@ -207,14 +218,6 @@
 			<url>http://repository.springsource.com/maven/bundles/external</url>
 		</repository>
 
-		<repository>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-			<id>hyweb.release</id>
-			<name>Hyweb Proxy Repository(proxy maven central)</name>
-			<url>http://10.10.4.91:8183/artifactory/libs-release</url>
-		</repository>
 	</repositories>
 	
 </project>

@@ -21,11 +21,11 @@
   </context-param>
   <context-param>
     <param-name>runnerConfigKey</param-name>
-    <param-value>test</param-value>
+    <param-value>actionHome</param-value>
   </context-param>
   <filter>
     <filter-name>FileUploadFilter</filter-name>
-    <filter-class>com.hyweb.runner.web.filter.FileUploadFilter</filter-class>
+    <filter-class>tw.com.useful.runner.web.filter.FileUploadFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>FileUploadFilter</filter-name>
@@ -41,13 +41,13 @@
     <listener-class>org.apache.commons.fileupload.servlet.FileCleanerCleanup</listener-class>
   </listener>
   <listener>
-    <listener-class>com.hyweb.runner.web.listener.InitListener</listener-class>
+    <listener-class>tw.com.useful.runner.web.listener.InitListener</listener-class>
   </listener>
   <servlet>
     <description></description>
     <display-name>ActionServiceServlet</display-name>
     <servlet-name>ActionServiceServlet</servlet-name>
-    <servlet-class>com.hyweb.runner.ActionServiceServlet</servlet-class>
+    <servlet-class>tw.com.useful.ActionServiceServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ActionServiceServlet</servlet-name>
@@ -63,46 +63,6 @@
     <servlet-name>hyAppDS</servlet-name>
     <url-pattern>/hyAppDS</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>PushNotificationServlet</display-name>
-    <servlet-name>PushNotificationServlet</servlet-name>
-    <servlet-class>com.hyweb.pushserver.PushNotificationServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>PushNotificationServlet</servlet-name>
-    <url-pattern>/send</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>TestPushNotificationServlet</display-name>
-    <servlet-name>TestPushNotificationServlet</servlet-name>
-    <servlet-class>com.hyweb.pushserver.TestPushNotificationServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>TestPushNotificationServlet</servlet-name>
-    <url-pattern>/run</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>DeviceRegistrationServlet</display-name>
-    <servlet-name>DeviceRegistrationServlet</servlet-name>
-    <servlet-class>com.hyweb.pushserver.DeviceRegistrationServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>DeviceRegistrationServlet</servlet-name>
-    <url-pattern>/register</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>getImg</display-name>
-    <servlet-name>getImg</servlet-name>
-    <servlet-class>com.hyweb.web.GetImgServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>getImg</servlet-name>
-    <url-pattern>/getImg</url-pattern>
-  </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
@@ -111,26 +71,6 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  <servlet>
-    <description></description>
-    <display-name>TestPdfUtilServlet</display-name>
-    <servlet-name>TestPdfUtilServlet</servlet-name>
-    <servlet-class>com.hyweb.web.TestPdfUtilServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>TestPdfUtilServlet</servlet-name>
-    <url-pattern>/pdf/run</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>TestPushLoggerServlet</display-name>
-    <servlet-name>TestPushLoggerServlet</servlet-name>
-    <servlet-class>com.hyweb.pushserver.TestPushLoggerServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>TestPushLoggerServlet</servlet-name>
-    <url-pattern>/test/push/log</url-pattern>
-  </servlet-mapping>
   <servlet>
     <description></description>
     <display-name>AuthorizeService</display-name>
