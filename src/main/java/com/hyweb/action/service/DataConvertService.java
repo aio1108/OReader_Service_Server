@@ -16,6 +16,14 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executors;
 
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Result;
+import javax.xml.transform.Source;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+
 import net.sf.json.JSON;
 
 import org.apache.commons.httpclient.HttpClient;
@@ -348,7 +356,7 @@ public class DataConvertService extends LogicalService
 		return resultList;
 	}
 	
-	public Map getXMLDataFromURL(){
+	public Document getXMLDataFromURL() throws TransformerException{
 		Document doc = new Document();
     	String url = (String)this.getInputParameter("url","");
     	String charset = (String)this.getInputParameter("charset", "UTF-8");
@@ -374,6 +382,14 @@ public class DataConvertService extends LogicalService
 			e.printStackTrace();
 		}
 		
+		TransformerFactory factory = TransformerFactory.newInstance();
+		Source xsl = null;
+		Transformer transformer = factory.newTransformer(xsl);
+		transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+		Result result = null;
+		transformer.transform(xsl, result);
+		
+		/*
 		String result = "";
 		try {
 			result = JDomUtil.jdomToString(doc);
@@ -382,6 +398,7 @@ public class DataConvertService extends LogicalService
 			e.printStackTrace();
 		}
 		JSONUtil xmlSerializer = new JSONUtil(); 
+		xmlSerializer.setRemoveNamespacePrefixFromElements(true);
 		xmlSerializer.setSkipNamespaces(true); 
 		xmlSerializer.setTypeHintsCompatibility(true);
 		xmlSerializer.setTypeHintsEnabled(false);
@@ -390,9 +407,10 @@ public class DataConvertService extends LogicalService
 		
 		Gson gson = new Gson();
 		Map obj = gson.fromJson(result, Map.class);
-		
-		//return doc;
 		return obj;
+		*/
+		
+		return doc;
 	}
 	
 	public int getEndIndex()

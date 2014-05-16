@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.servlet.jsp.el.ELException;
+
 import net.sf.json.JSON;
 
 import org.apache.commons.el.ExpressionEvaluatorImpl;
@@ -71,20 +73,17 @@ public class AppDataProvider extends LogicalAction
 		
 		
 		String outputType = outputE.getAttributeValue("type")==null? "json" : outputE.getAttributeValue("type").toLowerCase();
-		//outputE.removeAttribute("type");
 		
-		VariableContainer vc = ActionUtil.getActionVariableData(null,rootE,this,_inSpo,_log);
+		VariableContainer vc = ActionUtil.getActionVariableData(null, rootE, this, _inSpo, _log);
 		
 		List outElemList = outputE.getChildren();
 		System.out.println("outElemList count="+outElemList.size());
 		
-		for(int i=0;i<outElemList.size();i++)
-		{
+		for(int i=0;i<outElemList.size();i++){
 			Element e = (Element)outElemList.get(i);
 			replaceTextValue(e,vc);
 			
-			if(e.getQualifiedName().equals("data"))
-			{
+			if(e.getQualifiedName().equals("data")){
 				//prcoess data from ds.
 				String ds = e.getAttributeValue("ds")==null? "" : e.getAttributeValue("ds");
 				if(ds.length()==0) continue;
@@ -98,39 +97,8 @@ public class AppDataProvider extends LogicalAction
 					Document dsDoc = (Document)itemsObj;
 					e.addContent((Element)dsDoc.getRootElement().clone());
 				}			
-			}
-			else if(e.getQualifiedName().equals("for-each"))
-			{
-				e.getParent().removeContent(e);
-					
-				String var = e.getAttributeValue("var")==null? "" : e.getAttributeValue("var");
-				String items = e.getAttributeValue("items")==null? "" : e.getAttributeValue("items");
-				ExpressionEvaluatorImpl _evImpl = new ExpressionEvaluatorImpl();
-				Object itemsObj = _evImpl.evaluate(items,Object.class,vc,vc);
-				
-				
-								
-				if(itemsObj instanceof List)
-				{
-					List itemsList = (List)itemsObj;
-					
-					Element templateE = (Element)e.getChildren().get(0);
-					
-					for(int j=0;j<itemsList.size();j++)
-					{
-						Map data = (Map)itemsList.get(j);
-						vc.put(var, data);
-						
-						Element rowE = (Element)templateE.clone();
-						List columnList = rowE.getChildren();
-						for(int k=0;k<columnList.size();k++)
-						{
-							Element cE = (Element)columnList.get(k);
-							replaceTextValue(cE,vc);
-						}
-						outputE.addContent(rowE);
-					}
-				}
+			}else if(e.getQualifiedName().equals("for-each")){
+				processForEachLoop(e, vc, outputE);
 			}
 		}
 		
@@ -138,16 +106,13 @@ public class AppDataProvider extends LogicalAction
 		Document outDoc = new Document(new Element("hpMain"));
 		
 		List outputEList = outputE.getChildren();
-		for(int i=0;i<outputEList.size();i++)
-		{
+		for(int i=0;i<outputEList.size();i++){
 			Element tempE = (Element)outputEList.get(i);
-			
 			RmJDomUtil.addJdomElement(outDoc.getRootElement(),(Element)tempE.clone());
 		}
 		
 		result = JDomUtil.jdomToString(outDoc);
-		if("json".equalsIgnoreCase(outputType))
-		{
+		if("json".equalsIgnoreCase(outputType)){
 			JSONUtil xmlSerializer = new JSONUtil(); 
 			xmlSerializer.setSkipNamespaces(true); 
 			xmlSerializer.setTypeHintsCompatibility(true);
@@ -161,6 +126,33 @@ public class AppDataProvider extends LogicalAction
 		this.setSuccessful(true);
 	}
 	
+	private void processForEachLoop(Element e, VariableContainer vc, Element outputE) throws Exception{
+		e.getParent().removeContent(e);
+		
+		String var = e.getAttributeValue("var")==null? "" : e.getAttributeValue("var");
+		String items = e.getAttributeValue("items")==null? "" : e.getAttributeValue("items");
+		ExpressionEvaluatorImpl _evImpl = new ExpressionEvaluatorImpl();
+		Object itemsObj = _evImpl.evaluate(items, Object.class, vc, vc);
+		
+		if(itemsObj instanceof List){
+			List itemsList = (List)itemsObj;
+			Element templateE = (Element)e.getChildren().get(0);
+			for(int j=0;j < itemsList.size();j++){
+				Map data = (Map)itemsList.get(j);
+				vc.put(var, data);
+				
+				Element rowE = (Element)templateE.clone();
+				List columnList = rowE.getChildren();
+				for(int k=0;k < columnList.size();k++){
+					Element cE = (Element)columnList.get(k);
+					replaceTextValue(cE,vc);
+				}
+				outputE.addContent(rowE);
+			}
+		}
+		
+	}
+
 	private void replaceTextValue(Element e, VariableContainer vc)
 	{
 		if(e.getText()==null) return;
