@@ -39,6 +39,7 @@ import org.jdom.Element;
 import org.jdom.JDOMException;
 
 import tw.com.useful.runner.util.LogicalService;
+import tw.com.useful.runner.util.LsUtil;
 import tw.com.useful.runner.util.RmJDomUtil;
 
 import com.google.common.util.concurrent.FutureCallback;
@@ -382,12 +383,7 @@ public class DataConvertService extends LogicalService
 			e.printStackTrace();
 		}
 		
-		TransformerFactory factory = TransformerFactory.newInstance();
-		Source xsl = null;
-		Transformer transformer = factory.newTransformer(xsl);
-		transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-		Result result = null;
-		transformer.transform(xsl, result);
+		final String transformedXML = LsUtil.transform(dom, xslHome + "page.xsl");
 		
 		/*
 		String result = "";
