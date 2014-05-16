@@ -357,7 +357,7 @@ public class DataConvertService extends LogicalService
 		return resultList;
 	}
 	
-	public Document getXMLDataFromURL() throws TransformerException{
+	public Document getXMLDataFromURL() throws Exception{
 		Document doc = new Document();
     	String url = (String)this.getInputParameter("url","");
     	String charset = (String)this.getInputParameter("charset", "UTF-8");
@@ -383,7 +383,7 @@ public class DataConvertService extends LogicalService
 			e.printStackTrace();
 		}
 		
-		final String transformedXML = LsUtil.transform(dom, xslHome + "page.xsl");
+		final String transformedXML = LsUtil.transform(doc, "page.xsl");
 		
 		/*
 		String result = "";
