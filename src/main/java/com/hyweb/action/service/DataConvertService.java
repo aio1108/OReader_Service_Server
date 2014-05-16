@@ -1,6 +1,7 @@
 package com.hyweb.action.service;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -361,6 +362,7 @@ public class DataConvertService extends LogicalService
 		Document doc = new Document();
     	String url = (String)this.getInputParameter("url","");
     	String charset = (String)this.getInputParameter("charset", "UTF-8");
+    	String xslName = (String) this.getInputParameter("xslName","");
     	
 		HttpClient httpclient = new HttpClient();
 		GetMethod get = new GetMethod(url);
@@ -383,28 +385,12 @@ public class DataConvertService extends LogicalService
 			e.printStackTrace();
 		}
 		
-		final String transformedXML = LsUtil.transform(doc, "page.xsl");
-		
-		/*
-		String result = "";
-		try {
-			result = JDomUtil.jdomToString(doc);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if(!xslName.equals("")){
+			final String transformedXML = LsUtil.transform(doc, LsUtil.getSysValue("actionXslPath") + xslName);
+			InputStream is = new ByteArrayInputStream(transformedXML.getBytes("utf-8"));
+			Document transformedDoc = RmJDomUtil.buildXml(is);
+			return transformedDoc;
 		}
-		JSONUtil xmlSerializer = new JSONUtil(); 
-		xmlSerializer.setRemoveNamespacePrefixFromElements(true);
-		xmlSerializer.setSkipNamespaces(true); 
-		xmlSerializer.setTypeHintsCompatibility(true);
-		xmlSerializer.setTypeHintsEnabled(false);
-		JSON json = xmlSerializer.read(result);  
-		result = json.toString(2);
-		
-		Gson gson = new Gson();
-		Map obj = gson.fromJson(result, Map.class);
-		return obj;
-		*/
 		
 		return doc;
 	}
