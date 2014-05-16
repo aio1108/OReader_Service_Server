@@ -16,6 +16,8 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executors;
 
+import net.sf.json.JSON;
+
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpException;
 import org.apache.commons.httpclient.methods.GetMethod;
@@ -36,6 +38,9 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.ListeningExecutorService;
 import com.google.common.util.concurrent.MoreExecutors;
+import com.google.gson.Gson;
+import com.hyweb.util.JDomUtil;
+import com.hyweb.util.JSONUtil;
 
 public class DataConvertService extends LogicalService
 {
@@ -343,8 +348,7 @@ public class DataConvertService extends LogicalService
 		return resultList;
 	}
 	
-	public Document getDataFromURL()
-	{
+	public Map getXMLDataFromURL(){
 		Document doc = new Document();
     	String url = (String)this.getInputParameter("url","");
     	String charset = (String)this.getInputParameter("charset", "UTF-8");
@@ -352,8 +356,7 @@ public class DataConvertService extends LogicalService
 		HttpClient httpclient = new HttpClient();
 		GetMethod get = new GetMethod(url);
 
-		try
-		{
+		try{
 			httpclient.getParams().setParameter("http.protocol.content-charset", charset);
 			int result = httpclient.executeMethod(get);
 			System.out.println("StatusCode: " + result);
@@ -363,18 +366,33 @@ public class DataConvertService extends LogicalService
 			InputStream is = new ByteArrayInputStream(resData.getBytes(charset));        
 			
 			doc = RmJDomUtil.buildXml(is);
-		} catch (HttpException e)
-		{
+		}catch (HttpException e){
 			
-		} catch (IOException e)
-		{
+		}catch (IOException e){
 			
-		} catch (JDOMException e) {
-			// TODO Auto-generated catch block
+		}catch (JDOMException e){
 			e.printStackTrace();
 		}
 		
-		return doc;
+		String result = "";
+		try {
+			result = JDomUtil.jdomToString(doc);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		JSONUtil xmlSerializer = new JSONUtil(); 
+		xmlSerializer.setSkipNamespaces(true); 
+		xmlSerializer.setTypeHintsCompatibility(true);
+		xmlSerializer.setTypeHintsEnabled(false);
+		JSON json = xmlSerializer.read(result);  
+		result = json.toString(2);
+		
+		Gson gson = new Gson();
+		Map obj = gson.fromJson(result, Map.class);
+		
+		//return doc;
+		return obj;
 	}
 	
 	public int getEndIndex()
@@ -404,11 +422,6 @@ public class DataConvertService extends LogicalService
         }
 		
 		return endIndex;
-	}
-	
-	public String test()
-	{	
-		return "";
 	}
 	
 	private class FutureCallbackImpl implements FutureCallback<String> {

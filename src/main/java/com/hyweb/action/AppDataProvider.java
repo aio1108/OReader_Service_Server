@@ -156,28 +156,7 @@ public class AppDataProvider extends LogicalAction
 			result = json.toString(2);
 		}
 		
-		//System.out.println( RmJDomUtil.jdomToString(doc));
 		_outSpo.put(RESULT,result);
-		
-		
-		//暫寺的做法, 筅產生json file for開發測試用. 之後要改掉..
-		String outputFileName = "";
-		
-		
-		String id =  ActionUtil.resolveVariable("${request.id}", vc, _log,false);
-		System.out.println("id=============="+id);
-		if(id.length()>0)
-		{
-			outputFileName = id + "."+outputType;
-		}
-		else
-		{
-			outputFileName =_inSpo.get(XML_SPEC_NAME).toString().replaceAll(".xml","."+outputType);
-		}
-			
-		String tempPath = "D:\\APP_DATA\\JSON\\" + outputFileName;
-		
-		FileUtils.writeStringToFile(new File(tempPath), result, "UTF-8");
 		
 		this.setSuccessful(true);
 	}
