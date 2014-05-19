@@ -57,6 +57,8 @@ import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.ListeningExecutorService;
 import com.google.common.util.concurrent.MoreExecutors;
 import com.google.gson.Gson;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonToken;
 import com.hyweb.util.JDomUtil;
 import com.hyweb.util.JSONUtil;
 
@@ -285,6 +287,34 @@ public class DataConvertService extends LogicalService
 		return doc;
 	}
 	
+	public List getJsonDataFromURL(){
+		List resultList = null;
+		String url = (String)this.getInputParameter("url","");
+    	String charset = (String)this.getInputParameter("charset", "UTF-8");
+    	HttpClient httpclient = new HttpClient();
+		GetMethod get = new GetMethod(url);
+		try{
+			httpclient.getParams().setParameter("http.protocol.content-charset", charset);
+			int result = httpclient.executeMethod(get);
+			System.out.println("StatusCode: " + result);
+			String resData = get.getResponseBodyAsString();
+			InputStream is = new ByteArrayInputStream(resData.getBytes(charset));        
+			JsonReader jsonReader = new JsonReader(new InputStreamReader(is, "UTF-8"));
+			Gson gson = new Gson();
+			if(jsonReader.peek().equals(JsonToken.BEGIN_ARRAY)){
+				resultList = gson.fromJson(jsonReader, List.class);
+			}else{
+				resultList = new ArrayList<Map>();
+				resultList.add(gson.fromJson(jsonReader, Map.class));
+			}
+		}catch (HttpException e){
+			
+		}catch (IOException e){
+			
+		}
+		return resultList;
+	}
+	
 	public List<Map> getCSVDataFromURL(){
 		List<Map> resultList = new ArrayList<Map>();
 		ICsvMapReader mapReader = null;
@@ -306,9 +336,13 @@ public class DataConvertService extends LogicalService
 			final Map<String, String> headerMap = getHeaderMap(headerIds, header);
 			Map<String, Object> customerMap;
             while( (customerMap = mapReader.read(header, processors)) != null ) {
-            	Map row = new HashMap();
-            	for(String key : headerMap.keySet()){
-            		row.put(headerMap.get(key), customerMap.get(key));
+            	Map<String, Object> row = new HashMap<String, Object>();
+            	if(headerIds.length() == 0){
+            		row = customerMap;
+            	}else{
+            		for(String key : headerMap.keySet()){
+                		row.put(headerMap.get(key), customerMap.get(key));
+                	}
             	}
             	resultList.add(row);
             }
