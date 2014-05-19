@@ -5,7 +5,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Iterator;
@@ -30,6 +32,7 @@ import net.sf.json.JSON;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpException;
 import org.apache.commons.httpclient.methods.GetMethod;
+import org.apache.log4j.Logger;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
@@ -38,6 +41,11 @@ import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
+import org.supercsv.cellprocessor.Optional;
+import org.supercsv.cellprocessor.ift.CellProcessor;
+import org.supercsv.io.CsvMapReader;
+import org.supercsv.io.ICsvMapReader;
+import org.supercsv.prefs.CsvPreference;
 
 import tw.com.useful.runner.util.LogicalService;
 import tw.com.useful.runner.util.LsUtil;
@@ -54,11 +62,9 @@ import com.hyweb.util.JSONUtil;
 
 public class DataConvertService extends LogicalService
 {
+	private Logger logger = Logger.getLogger(DataConvertService.class);
 	private ListeningExecutorService executorService;
-	private List cityRowList = new ArrayList();
-	private List indicatorRowList = new ArrayList();
 	private CountDownLatch waitCount;
-	private Document concurrentDoc = new Document();
 	
 	public Map getDsFromExcel() throws IOException {
 		String fileName = (String)this.getInputParameter("fileName","");
@@ -73,122 +79,6 @@ public class DataConvertService extends LogicalService
 		String columnIndex = (String)this.getInputParameter("columnIndex","");
 		Map resultMap = transformExcelToMapWithFirstGroup(fileName, sheetIndex, columnIndex);
 		return resultMap;
-	}
-	
-	public Document getDsWithConditionsFromExcel() throws IOException{
-		String fileName = (String)this.getInputParameter("fileName","");
-		String sheetIndex = (String)this.getInputParameter("sheet","0");
-		String[] indices = ((String)this.getInputParameter("indices","")).split(",");
-		String[] cities = ((String)this.getInputParameter("cities","")).split(",");
-		String[] years = ((String)this.getInputParameter("years","")).split(",");
-		concurrentDoc.setRootElement(new Element("result"));
-		executorService = MoreExecutors.listeningDecorator(Executors.newFixedThreadPool(indices.length));
-		
-		Map citiesMap = transformExcelToMap(fileName, "4");
-		int cityEndIndex = findEndIndexByFlag(citiesMap, "####");
-		cityRowList = filterToListFromExcelDS(citiesMap, 2, cityEndIndex, "B,C,D,E");
-		
-		Map indicatorMap = transformExcelToMap(fileName, "0");
-		int indicatorEndIndex = findEndIndexByFlag(indicatorMap, "####");
-		indicatorRowList = filterToListFromExcelDS(indicatorMap, 2, indicatorEndIndex, "B,C,D,E,F,G,H,I,J");
-		
-		try{
-			if(indices.length != 0 && cities.length != 0 && years.length != 0){
-				waitCount = new CountDownLatch(indices.length);
-				for(int i = 0;i < indices.length;i++){
-					ListenableFuture<String> futureTask = executorService.submit(new Task(fileName, sheetIndex, indices[i], cities, years));
-			        FutureCallbackImpl callback = new FutureCallbackImpl();
-			        Futures.addCallback(futureTask, callback);
-				}
-		        waitCount.await();
-		        return concurrentDoc;
-			}
-			return concurrentDoc;
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-			return concurrentDoc;
-		}finally{
-			executorService.shutdownNow();
-		}
-	}
-	
-	private void addExcelRowsToDocWithConditions(String fileName, String sheetIndex, String index, String[] cities, String[] years) throws IOException { 
-		FileInputStream fis = new FileInputStream(fileName);
-        POIFSFileSystem fs = new POIFSFileSystem( fis );
-        Map cityMap = new Hashtable();
-        List<Double> yearList = new ArrayList<Double>();
-        HSSFWorkbook wb = new HSSFWorkbook(fs);
-        HSSFSheet sheet = wb.getSheetAt(Integer.parseInt(sheetIndex));
-        HSSFRow headerRow = sheet.getRow(0);
-        for(int i = 0;i < years.length;i++){
-        	yearList.add(Double.parseDouble(years[i]));
-        }
-        for(int i = 0;i < headerRow.getPhysicalNumberOfCells();i++){
-        	HSSFCell headerCell = headerRow.getCell(i);
-        	if(headerCell.toString().startsWith("C")){
-        		cityMap.put(headerCell.toString(), i);
-        	}
-        }
-        for (int i = 1; i < sheet.getPhysicalNumberOfRows() ; i++) {
-            HSSFRow row = sheet.getRow(i);
-            HSSFCell indexCell = row.getCell(1);
-            HSSFCell yearCell = row.getCell(2);
-            if(indexCell.toString().equals(index) && yearList.contains(Double.parseDouble(yearCell.toString()))){
-            	Map resultMap = new Hashtable();
-            	Element indexElement = new Element("index");
-            	Element idElement = new Element("id");
-            	Element nameElement = new Element("name");
-            	Element yearElement = new Element("year");
-            	idElement.setText(index);
-            	nameElement.setText(findIndexName(index));
-            	yearElement.setText(yearCell.toString());
-            	indexElement.addContent(idElement);
-            	indexElement.addContent(nameElement);
-            	indexElement.addContent(yearElement);
-            	for(int j = 0;j < cities.length;j++){
-            		if(cityMap.containsKey(cities[j])){
-            			int cellIndex = (Integer) cityMap.get(cities[j]);
-            			HSSFCell cell = row.getCell(cellIndex);
-            			if (cell == null || cell.getCellType() == HSSFCell.CELL_TYPE_BLANK){
-                            continue;
-                        }
-            			Element cityElement = new Element("city");
-            			Element cityIdElement = new Element("id");
-            			Element cityNameElement = new Element("name");
-            			Element valueElement = new Element("value");
-            			cityIdElement.setText(cities[j]);
-            			cityNameElement.setText(findCityName(cities[j]));
-            			valueElement.setText(cell.toString());
-            			cityElement.addContent(cityIdElement);
-            			cityElement.addContent(cityNameElement);
-            			cityElement.addContent(valueElement);
-            			indexElement.addContent(cityElement);
-            		}
-            	}
-            	concurrentDoc.getRootElement().addContent(indexElement);
-            }
-        }
-        fis.close();
-	}
-	
-	private String findIndexName(String id) {
-		for(int i = 0;i < indicatorRowList.size();i++){
-			Map row = (Map) indicatorRowList.get(i);
-			if(row.get("B").toString().equals(id)){
-				return row.get("C").toString(); 
-			}
-		}
-		return "";
-	}
-
-	private String findCityName(String id) {
-		for(int i = 0;i < cityRowList.size();i++){
-			Map row = (Map) cityRowList.get(i);
-			if(row.get("B").toString().equals(id)){
-				return row.get("C").toString(); 
-			}
-		}
-		return "";
 	}
 
 	private Map transformExcelToMapWithFirstGroup(String fileName, String sheetIndex, String columnIndex) throws IOException {
@@ -395,6 +285,69 @@ public class DataConvertService extends LogicalService
 		return doc;
 	}
 	
+	public List<Map> getCSVDataFromURL(){
+		List<Map> resultList = new ArrayList<Map>();
+		ICsvMapReader mapReader = null;
+		String url = (String)this.getInputParameter("url","");
+		String headerIds = (String)this.getInputParameter("headerIds","");
+    	String charset = (String)this.getInputParameter("charset", "UTF-8");
+    	HttpClient httpclient = new HttpClient();
+		GetMethod get = new GetMethod(url);
+		try{
+			httpclient.getParams().setParameter("http.protocol.content-charset", charset);
+			int result = httpclient.executeMethod(get);
+			System.out.println("StatusCode: " + result);
+			String resData = get.getResponseBodyAsString();
+			InputStream is = new ByteArrayInputStream(resData.getBytes(charset));        
+			
+			mapReader = new CsvMapReader(new InputStreamReader(is), CsvPreference.STANDARD_PREFERENCE);
+			final String[] header = mapReader.getHeader(true);
+			final CellProcessor[] processors = getProcessors(header);
+			final Map<String, String> headerMap = getHeaderMap(headerIds, header);
+			Map<String, Object> customerMap;
+            while( (customerMap = mapReader.read(header, processors)) != null ) {
+            	Map row = new HashMap();
+            	for(String key : headerMap.keySet()){
+            		row.put(headerMap.get(key), customerMap.get(key));
+            	}
+            	resultList.add(row);
+            }
+		}catch (HttpException e){
+			
+		}catch (IOException e){
+			
+		}finally{
+			if(mapReader != null){
+				try {
+					mapReader.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+    	return resultList;
+	}
+	
+	private Map<String, String> getHeaderMap(String headerIds, String[] header) {
+		if(headerIds.length() == 0){
+			return null;
+		}
+		Map<String, String> result = new HashMap<String, String>();
+		String[] ids = headerIds.split(",");
+		for(int i = 0;i < ids.length;i++){
+			result.put(header[i], ids[i]);
+		}
+		return result;
+	}
+
+	private CellProcessor[] getProcessors(String[] header) {
+		final CellProcessor[] processors = new CellProcessor[header.length];
+		for(int i = 0;i < header.length;i++){
+			processors[i] = new Optional();
+		}
+	    return processors;
+	}
+	
 	public int getEndIndex()
 	{
 		Map dsMap = (Map)this.getInputParameter("dataSet","");
@@ -466,7 +419,6 @@ public class DataConvertService extends LogicalService
  
         @Override
         public String call() throws Exception {
-        	addExcelRowsToDocWithConditions(fileName, sheetIndex, index, cities, years);
             return "Task Done";
         }
     }
