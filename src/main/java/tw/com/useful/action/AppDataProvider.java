@@ -1,4 +1,4 @@
-package com.hyweb.action;
+package tw.com.useful.action;
 
 import java.io.File;
 import java.lang.reflect.Method;
@@ -34,9 +34,8 @@ import tw.com.useful.runner.util.LsUtil;
 import tw.com.useful.runner.util.RmJDomUtil;
 import tw.com.useful.runner.util.RmLogger;
 import tw.com.useful.runner.util.SpringContext;
-
-import com.hyweb.util.JDomUtil;
-import com.hyweb.util.JSONUtil;
+import tw.com.useful.util.JDomUtil;
+import tw.com.useful.util.JSONUtil;
 
 public class AppDataProvider extends LogicalAction
 {

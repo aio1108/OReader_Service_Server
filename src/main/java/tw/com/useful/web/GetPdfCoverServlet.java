@@ -1,4 +1,4 @@
-package com.hyweb.web;
+package tw.com.useful.web;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -46,9 +46,8 @@ import tw.com.useful.runner.util.ServiceInput;
 import tw.com.useful.runner.util.ServiceOutput;
 import tw.com.useful.runner.util.SpringContext;
 import tw.com.useful.runner.util.XmlUtil;
-
-import com.hyweb.util.CommonUtil;
-import com.hyweb.util.JDomUtil;
+import tw.com.useful.util.CommonUtil;
+import tw.com.useful.util.JDomUtil;
 
 
 

@@ -1,4 +1,4 @@
-package com.hyweb.mybatis.plugin;
+package tw.com.useful.mybatis.plugin;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

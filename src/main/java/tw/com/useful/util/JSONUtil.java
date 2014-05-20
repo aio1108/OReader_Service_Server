@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.hyweb.util;
+package tw.com.useful.util;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;

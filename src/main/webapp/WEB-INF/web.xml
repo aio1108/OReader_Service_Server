@@ -57,7 +57,7 @@
     <description></description>
     <display-name>hyAppDS</display-name>
     <servlet-name>hyAppDS</servlet-name>
-    <servlet-class>com.hyweb.web.DataProviderServlet</servlet-class>
+    <servlet-class>tw.com.useful.web.DataProviderServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>hyAppDS</servlet-name>
@@ -75,7 +75,7 @@
     <description></description>
     <display-name>AuthorizeService</display-name>
     <servlet-name>AuthorizeService</servlet-name>
-    <servlet-class>com.hyweb.authorize.AuthorizeService</servlet-class>
+    <servlet-class>tw.com.useful.authorize.AuthorizeService</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>AuthorizeService</servlet-name>

@@ -1,4 +1,4 @@
-package com.hyweb.util;
+package tw.com.useful.util;
 
 import java.io.IOException;
 import java.io.InputStream;
