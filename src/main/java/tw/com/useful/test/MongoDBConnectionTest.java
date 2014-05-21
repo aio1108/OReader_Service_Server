@@ -12,7 +12,6 @@ import org.junit.Test;
 
 import tw.com.useful.common.ConfigProperties;
 import tw.com.useful.connection.MongoDBConnection;
-import tw.com.useful.dao.FieldDao;
 import tw.com.useful.dao.MetaDataDao;
 import tw.com.useful.dao.ViewTypeDao;
 import tw.com.useful.data.model.Field;
@@ -25,7 +24,6 @@ public class MongoDBConnectionTest {
 
 	private MetaDataDao metaDataDao;
 	private ViewTypeDao viewTypeDao;
-	private FieldDao fieldDao;
 	
 	@Before
 	public void setup(){
@@ -36,14 +34,11 @@ public class MongoDBConnectionTest {
 		ConfigProperties.getInstance().setProperties(properties);
 		metaDataDao = new MetaDataDao();
 		viewTypeDao = new ViewTypeDao();
-		fieldDao = new FieldDao();
 		clearCollections();
-		prepareFields();
 		prepareViewTypes();
 	}
 	
 	private void clearCollections() {
-		fieldDao.removeAll();
 		viewTypeDao.removeAll();
 		metaDataDao.removeAll();
 	}
@@ -56,20 +51,10 @@ public class MongoDBConnectionTest {
 		Assert.assertNotNull(type1.getId());
 		Assert.assertNotNull(type2.getId());
 	}
-
-	private void prepareFields() {
-		Field field1 = new Field("date", "日期");
-		Field field2 = new Field("place", "地點");
-		fieldDao.save(field1);
-		fieldDao.save(field2);
-		Assert.assertNotNull(field1.getId());
-		Assert.assertNotNull(field2.getId());
-	}
 	
 	//@Ignore
 	@Test
 	public void testMetaDataSave(){
-		List<Field> fields = fieldDao.find();
 		List<ViewType> types = viewTypeDao.find();
 		MetaData obj = new MetaData();
 		obj.setName("測試資料");
@@ -95,7 +80,6 @@ public class MongoDBConnectionTest {
 	
 	@After
 	public void done(){
-		fieldDao.removeAll();
 		viewTypeDao.removeAll();
 		metaDataDao.removeAll();
 		MongoDBConnection.getInstance().close();
