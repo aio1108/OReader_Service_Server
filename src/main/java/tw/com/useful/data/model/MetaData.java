@@ -2,6 +2,9 @@ package tw.com.useful.data.model;
 
 import java.util.List;
 
+import tw.com.useful.util.DBObjectConverter;
+
+import com.mongodb.DBObject;
 import com.mongodb.DBRef;
 
 public class MetaData extends BaseDataModel {
@@ -10,9 +13,20 @@ public class MetaData extends BaseDataModel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	private List<Field> fields;
+	
+	
 	public MetaData(){
 		
+	}
+	
+	public MetaData(String name, String description, List<Field> fields, List<DBRef> types, DBRef defaultType, String action){
+		put("name", name);
+		put("description", description);
+		put("fields", fields);
+		put("viewTypes", types);
+		put("defaultViewType", defaultType);
+		put("action", action);
 	}
 
 	public String getName() {
@@ -30,12 +44,12 @@ public class MetaData extends BaseDataModel {
 	public void setDescription(String description) {
 		put("description", description);
 	}
-
-	public List<DBRef> getFields() {
-		return (List<DBRef>) get("fields");
+	
+	public List<Field> getFields() {
+		return DBObjectConverter.convert((List<DBObject>) get("fields"), Field.class);
 	}
 
-	public void setFields(List<DBRef> fields) {
+	public void setFields(List<Field> fields) {
 		put("fields", fields);
 	}
 
@@ -59,7 +73,7 @@ public class MetaData extends BaseDataModel {
 		return getString("action");
 	}
 
-	public void setAction(String name) {
-		put("action", name);
+	public void setAction(String action) {
+		put("action", action);
 	}
 }

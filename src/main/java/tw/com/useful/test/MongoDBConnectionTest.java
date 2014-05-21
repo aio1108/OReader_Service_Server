@@ -49,10 +49,8 @@ public class MongoDBConnectionTest {
 	}
 
 	private void prepareViewTypes() {
-		ViewType type1 = new ViewType();
-		ViewType type2 = new ViewType();
-		type1.setName("地圖");
-		type2.setName("表格");
+		ViewType type1 = new ViewType("map", "地圖");
+		ViewType type2 = new ViewType("table", "表格");
 		viewTypeDao.save(type1);
 		viewTypeDao.save(type2);
 		Assert.assertNotNull(type1.getId());
@@ -60,17 +58,15 @@ public class MongoDBConnectionTest {
 	}
 
 	private void prepareFields() {
-		Field field1 = new Field();
-		Field field2 = new Field();
-		field1.setName("日期");
-		field2.setName("地點");
+		Field field1 = new Field("date", "日期");
+		Field field2 = new Field("place", "地點");
 		fieldDao.save(field1);
 		fieldDao.save(field2);
 		Assert.assertNotNull(field1.getId());
 		Assert.assertNotNull(field2.getId());
 	}
 	
-	@Ignore
+	//@Ignore
 	@Test
 	public void testMetaDataSave(){
 		List<Field> fields = fieldDao.find();
@@ -80,8 +76,8 @@ public class MongoDBConnectionTest {
 		obj.setDescription("測試用");
 		obj.setDefaultViewType(viewTypeDao.getDBRef(types.get(0).getId()));
 		List fieldList = new ArrayList();
-		fieldList.add(fieldDao.getDBRef(fields.get(0).getId()));
-		fieldList.add(fieldDao.getDBRef(fields.get(1).getId()));
+		fieldList.add(new Field("date", "日期"));
+		fieldList.add(new Field("place", "地點"));
 		obj.setFields(fieldList);
 		List typeList = new ArrayList();
 		typeList.add(viewTypeDao.getDBRef(types.get(0).getId()));
@@ -92,9 +88,9 @@ public class MongoDBConnectionTest {
 		MetaData queryResult = (MetaData) metaDataDao.findById(obj.getId());
 		ViewType defaultType = (ViewType) queryResult.getDefaultViewType().fetch();
 		Assert.assertEquals("地圖", defaultType.getName());
-		List<DBRef> fieldRefs = queryResult.getFields();
-		Assert.assertEquals("日期", ((Field)fieldRefs.get(0).fetch()).getName());
-		Assert.assertEquals("地點", ((Field)fieldRefs.get(1).fetch()).getName());
+		List<Field> fieldRefs = queryResult.getFields();
+		Assert.assertEquals("日期", fieldRefs.get(0).getName());
+		Assert.assertEquals("地點", fieldRefs.get(1).getName());
 	}
 	
 	@After

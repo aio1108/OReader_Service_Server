@@ -8,6 +8,11 @@ public class ViewType extends BaseDataModel {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	public ViewType(String code, String name){
+		put("name", name);
+		put("code", code);
+	}
+	
 	public ViewType(){
 		
 	}
@@ -18,5 +23,13 @@ public class ViewType extends BaseDataModel {
 
 	public void setName(String name) {
 		put("name", name);
+	}
+	
+	public String getCode() {
+		return getString("code");
+	}
+
+	public void setCode(String code) {
+		put("code", code);
 	}
 }
