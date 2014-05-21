@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import tw.com.useful.connection.MongoDBConnection;
+import tw.com.useful.model.Field;
 import tw.com.useful.model.ViewType;
 
 import com.mongodb.BasicDBObject;
@@ -11,6 +12,7 @@ import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
+import com.mongodb.DBRef;
 import com.mongodb.WriteResult;
 
 public class ViewTypeDao {
@@ -33,6 +35,17 @@ public class ViewTypeDao {
 		DBObject name = new BasicDBObject();
 		name.put("name", name);
 		DBCursor cursor = viewTypeCollection.find(name);
+		List<ViewType> result = toList(cursor);
+		return result;
+	}
+	
+	public List<ViewType> find(){
+		DBCursor cursor = viewTypeCollection.find();
+		List<ViewType> result = toList(cursor);
+		return result;
+	}
+	
+	private List<ViewType> toList(DBCursor cursor) {
 		List<ViewType> result = new ArrayList<ViewType>();
 		while(cursor.hasNext()){
 			result.add((ViewType) cursor.next());
@@ -62,5 +75,13 @@ public class ViewTypeDao {
 	
 	public WriteResult remove(ViewType viewType){
 		return remove(viewType.get("_id"));
+	}
+	
+	public WriteResult removeAll(){
+		return viewTypeCollection.remove(new BasicDBObject());
+	}
+	
+	public DBRef getDBRef(Object id){
+		return new DBRef(database, viewTypeCollection.getName(), id);
 	}
 }
