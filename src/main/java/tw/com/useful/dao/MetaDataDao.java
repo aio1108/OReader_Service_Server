@@ -3,9 +3,10 @@ package tw.com.useful.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.bson.types.ObjectId;
+
 import tw.com.useful.connection.MongoDBConnection;
-import tw.com.useful.model.MetaData;
-import tw.com.useful.model.ViewType;
+import tw.com.useful.data.model.MetaData;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
@@ -25,7 +26,7 @@ public class MetaDataDao {
 		metaDataCollection.setObjectClass(MetaData.class);
 	}
 	
-	public MetaData findById(Object id){
+	public MetaData findById(ObjectId id){
 		DBObject objectId = new BasicDBObject();
 		objectId.put("_id", id);
 		return (MetaData) metaDataCollection.findOne(objectId);
@@ -55,25 +56,25 @@ public class MetaDataDao {
 	
 	public WriteResult update(MetaData metaData){
 		DBObject objectId = new BasicDBObject();
-		objectId.put("_id", metaData.get("_id"));
+		objectId.put("_id", metaData.getId());
 		return metaDataCollection.update(objectId, metaData);
 	}
 	
-	public WriteResult remove(Object id){
+	public WriteResult remove(ObjectId id){
 		DBObject objectId = new BasicDBObject();
 		objectId.put("_id", id);
 		return metaDataCollection.remove(objectId);
 	}
 	
 	public WriteResult remove(MetaData metaData){
-		return remove(metaData.get("_id"));
+		return remove(metaData.getId());
 	}
 	
 	public WriteResult removeAll(){
 		return metaDataCollection.remove(new BasicDBObject());
 	}
 	
-	public DBRef getDBRef(Object id){
+	public DBRef getDBRef(ObjectId id){
 		return new DBRef(database, metaDataCollection.getName(), id);
 	}
 }

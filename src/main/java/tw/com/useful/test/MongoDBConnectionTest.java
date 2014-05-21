@@ -14,9 +14,9 @@ import tw.com.useful.connection.MongoDBConnection;
 import tw.com.useful.dao.FieldDao;
 import tw.com.useful.dao.MetaDataDao;
 import tw.com.useful.dao.ViewTypeDao;
-import tw.com.useful.model.Field;
-import tw.com.useful.model.MetaData;
-import tw.com.useful.model.ViewType;
+import tw.com.useful.data.model.Field;
+import tw.com.useful.data.model.MetaData;
+import tw.com.useful.data.model.ViewType;
 
 import com.mongodb.DBRef;
 
@@ -36,6 +36,9 @@ public class MongoDBConnectionTest {
 		metaDataDao = new MetaDataDao();
 		viewTypeDao = new ViewTypeDao();
 		fieldDao = new FieldDao();
+		fieldDao.removeAll();
+		viewTypeDao.removeAll();
+		metaDataDao.removeAll();
 		prepareFields();
 		prepareViewTypes();
 	}
@@ -69,18 +72,18 @@ public class MongoDBConnectionTest {
 		MetaData obj = new MetaData();
 		obj.setName("測試資料");
 		obj.setDescription("測試用");
-		obj.setDefaultViewType(viewTypeDao.getDBRef(types.get(0).get("_id")));
+		obj.setDefaultViewType(viewTypeDao.getDBRef(types.get(0).getId()));
 		List fieldList = new ArrayList();
-		fieldList.add(fieldDao.getDBRef(fields.get(0).get("_id")));
-		fieldList.add(fieldDao.getDBRef(fields.get(1).get("_id")));
+		fieldList.add(fieldDao.getDBRef(fields.get(0).getId()));
+		fieldList.add(fieldDao.getDBRef(fields.get(1).getId()));
 		obj.setFields(fieldList);
 		List typeList = new ArrayList();
-		typeList.add(viewTypeDao.getDBRef(types.get(0).get("_id")));
-		typeList.add(viewTypeDao.getDBRef(types.get(1).get("_id")));
+		typeList.add(viewTypeDao.getDBRef(types.get(0).getId()));
+		typeList.add(viewTypeDao.getDBRef(types.get(1).getId()));
 		obj.setViewTypes(typeList);
 		metaDataDao.save(obj);
 		Assert.assertNotNull(obj.get("_id"));
-		MetaData queryResult = (MetaData) metaDataDao.findById(obj.get("_id"));
+		MetaData queryResult = (MetaData) metaDataDao.findById(obj.getId());
 		ViewType defaultType = (ViewType) queryResult.getDefaultViewType().fetch();
 		Assert.assertEquals("地圖", defaultType.getName());
 		List<DBRef> fieldRefs = queryResult.getFields();

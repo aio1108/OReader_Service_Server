@@ -3,8 +3,10 @@ package tw.com.useful.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.bson.types.ObjectId;
+
 import tw.com.useful.connection.MongoDBConnection;
-import tw.com.useful.model.Field;
+import tw.com.useful.data.model.Field;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
@@ -24,7 +26,7 @@ public class FieldDao {
 		filedCollection.setObjectClass(Field.class);
 	}
 	
-	public Field findById(Object id){
+	public Field findById(ObjectId id){
 		DBObject objectId = new BasicDBObject();
 		objectId.put("_id", id);
 		return (Field) filedCollection.findOne(objectId);
@@ -62,25 +64,25 @@ public class FieldDao {
 	
 	public WriteResult update(Field field){
 		DBObject objectId = new BasicDBObject();
-		objectId.put("_id", field.get("_id"));
+		objectId.put("_id", field.getId());
 		return filedCollection.update(objectId, field);
 	}
 	
-	public WriteResult remove(Object id){
+	public WriteResult remove(ObjectId id){
 		DBObject objectId = new BasicDBObject();
 		objectId.put("_id", id);
 		return filedCollection.remove(objectId);
 	}
 	
 	public WriteResult remove(Field field){
-		return remove(field.get("_id"));
+		return remove(field.getId());
 	}
 	
 	public WriteResult removeAll(){
 		return filedCollection.remove(new BasicDBObject());
 	}
 	
-	public DBRef getDBRef(Object id){
+	public DBRef getDBRef(ObjectId id){
 		return new DBRef(database, filedCollection.getName(), id);
 	}
 }

@@ -3,9 +3,10 @@ package tw.com.useful.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.bson.types.ObjectId;
+
 import tw.com.useful.connection.MongoDBConnection;
-import tw.com.useful.model.Field;
-import tw.com.useful.model.ViewType;
+import tw.com.useful.data.model.ViewType;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
@@ -25,7 +26,7 @@ public class ViewTypeDao {
 		viewTypeCollection.setObjectClass(ViewType.class);
 	}
 	
-	public ViewType findById(Object id){
+	public ViewType findById(ObjectId id){
 		DBObject objectId = new BasicDBObject();
 		objectId.put("_id", id);
 		return (ViewType) viewTypeCollection.findOne(objectId);
@@ -63,25 +64,25 @@ public class ViewTypeDao {
 	
 	public WriteResult update(ViewType viewType){
 		DBObject objectId = new BasicDBObject();
-		objectId.put("_id", viewType.get("_id"));
+		objectId.put("_id", viewType.getId());
 		return viewTypeCollection.update(objectId, viewType);
 	}
 	
-	public WriteResult remove(Object id){
+	public WriteResult remove(ObjectId id){
 		DBObject objectId = new BasicDBObject();
 		objectId.put("_id", id);
 		return viewTypeCollection.remove(objectId);
 	}
 	
 	public WriteResult remove(ViewType viewType){
-		return remove(viewType.get("_id"));
+		return remove(viewType.getId());
 	}
 	
 	public WriteResult removeAll(){
 		return viewTypeCollection.remove(new BasicDBObject());
 	}
 	
-	public DBRef getDBRef(Object id){
+	public DBRef getDBRef(ObjectId id){
 		return new DBRef(database, viewTypeCollection.getName(), id);
 	}
 }

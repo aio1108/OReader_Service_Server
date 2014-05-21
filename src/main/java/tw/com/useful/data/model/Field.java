@@ -1,15 +1,14 @@
-package tw.com.useful.model;
+package tw.com.useful.data.model;
 
-import com.mongodb.BasicDBObject;
 
-public class ViewType extends BasicDBObject {
-	
+public class Field extends BaseDataModel {
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
-	public ViewType(){
+	
+	public Field(){
 		
 	}
 
@@ -20,4 +19,5 @@ public class ViewType extends BasicDBObject {
 	public void setName(String name) {
 		put("name", name);
 	}
+
 }

@@ -1,11 +1,10 @@
-package tw.com.useful.model;
+package tw.com.useful.data.model;
 
 import java.util.List;
 
-import com.mongodb.BasicDBObject;
 import com.mongodb.DBRef;
 
-public class MetaData extends BasicDBObject {
+public class MetaData extends BaseDataModel {
 	
 	/**
 	 * 
