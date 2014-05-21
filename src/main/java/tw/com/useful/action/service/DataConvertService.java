@@ -286,7 +286,7 @@ public class DataConvertService extends LogicalService
 		
 		return doc;
 	}
-	
+
 	public List getJsonDataFromURL(){
 		List resultList = null;
 		String url = (String)this.getInputParameter("url","");

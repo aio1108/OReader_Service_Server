@@ -74,7 +74,7 @@ public class DataProviderServlet extends HttpServlet {
 		
 		Map requestMap = request.getParameterMap();
          
-        String actionType = "com.hyweb.action.AppDataProvider";
+        String actionType = "tw.com.useful.action.AppDataProvider";
         
         
         ActionInput input = new ActionInput();

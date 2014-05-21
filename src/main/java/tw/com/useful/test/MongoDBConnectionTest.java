@@ -7,6 +7,7 @@ import java.util.Properties;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import tw.com.useful.common.ConfigProperties;
@@ -36,13 +37,17 @@ public class MongoDBConnectionTest {
 		metaDataDao = new MetaDataDao();
 		viewTypeDao = new ViewTypeDao();
 		fieldDao = new FieldDao();
-		fieldDao.removeAll();
-		viewTypeDao.removeAll();
-		metaDataDao.removeAll();
+		clearCollections();
 		prepareFields();
 		prepareViewTypes();
 	}
 	
+	private void clearCollections() {
+		fieldDao.removeAll();
+		viewTypeDao.removeAll();
+		metaDataDao.removeAll();
+	}
+
 	private void prepareViewTypes() {
 		ViewType type1 = new ViewType();
 		ViewType type2 = new ViewType();
@@ -65,6 +70,7 @@ public class MongoDBConnectionTest {
 		Assert.assertNotNull(field2.getId());
 	}
 	
+	@Ignore
 	@Test
 	public void testMetaDataSave(){
 		List<Field> fields = fieldDao.find();
