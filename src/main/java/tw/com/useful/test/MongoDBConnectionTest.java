@@ -50,8 +50,8 @@ public class MongoDBConnectionTest {
 		type2.setName("表格");
 		viewTypeDao.save(type1);
 		viewTypeDao.save(type2);
-		Assert.assertNotNull(type1.get("_id"));
-		Assert.assertNotNull(type2.get("_id"));
+		Assert.assertNotNull(type1.getId());
+		Assert.assertNotNull(type2.getId());
 	}
 
 	private void prepareFields() {
@@ -61,8 +61,8 @@ public class MongoDBConnectionTest {
 		field2.setName("地點");
 		fieldDao.save(field1);
 		fieldDao.save(field2);
-		Assert.assertNotNull(field1.get("_id"));
-		Assert.assertNotNull(field2.get("_id"));
+		Assert.assertNotNull(field1.getId());
+		Assert.assertNotNull(field2.getId());
 	}
 	
 	@Test
@@ -82,7 +82,7 @@ public class MongoDBConnectionTest {
 		typeList.add(viewTypeDao.getDBRef(types.get(1).getId()));
 		obj.setViewTypes(typeList);
 		metaDataDao.save(obj);
-		Assert.assertNotNull(obj.get("_id"));
+		Assert.assertNotNull(obj.getId());
 		MetaData queryResult = (MetaData) metaDataDao.findById(obj.getId());
 		ViewType defaultType = (ViewType) queryResult.getDefaultViewType().fetch();
 		Assert.assertEquals("地圖", defaultType.getName());
