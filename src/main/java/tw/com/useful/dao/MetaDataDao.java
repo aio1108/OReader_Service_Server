@@ -3,8 +3,6 @@ package tw.com.useful.dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.bson.types.ObjectId;
-
 import tw.com.useful.data.model.MetaData;
 
 import com.mongodb.BasicDBObject;
@@ -19,16 +17,18 @@ public class MetaDataDao extends BaseDao {
 		collection.setObjectClass(MetaData.class);
 	}
 	
-	public MetaData findById(ObjectId id){
-		DBObject objectId = new BasicDBObject();
-		objectId.put("_id", id);
-		return (MetaData) collection.findOne(objectId);
+	public List<MetaData> find(DBObject query){
+		DBCursor cursor = collection.find(query);
+		return toList(cursor);
+	}
+	
+	public MetaData findOne(DBObject query){
+		return (MetaData) collection.findOne(query);
 	}
 	
 	public List<MetaData> find(){
 		DBCursor cursor = collection.find();
-		List<MetaData> result = toList(cursor);
-		return result;
+		return toList(cursor);
 	}
 	
 	private List<MetaData> toList(DBCursor cursor) {
@@ -51,12 +51,6 @@ public class MetaDataDao extends BaseDao {
 		DBObject objectId = new BasicDBObject();
 		objectId.put("_id", metaData.getId());
 		return collection.update(objectId, metaData);
-	}
-	
-	public WriteResult remove(ObjectId id){
-		DBObject objectId = new BasicDBObject();
-		objectId.put("_id", id);
-		return collection.remove(objectId);
 	}
 	
 	public WriteResult remove(MetaData metaData){

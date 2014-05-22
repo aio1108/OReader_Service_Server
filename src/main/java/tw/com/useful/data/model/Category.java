@@ -1,22 +1,19 @@
 package tw.com.useful.data.model;
 
-import com.mongodb.BasicDBObject;
 
-
-
-public class Field extends BasicDBObject {
-
+public class Category extends BaseDataModel {
+	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	public Field(String code, String name){
-		put("code", code);
+
+	public Category(String code, String name){
 		put("name", name);
+		put("code", code);
 	}
 	
-	public Field(){
+	public Category(){
 		
 	}
 
@@ -35,5 +32,4 @@ public class Field extends BasicDBObject {
 	public void setCode(String code) {
 		put("code", code);
 	}
-
 }

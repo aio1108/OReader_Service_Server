@@ -20,13 +20,14 @@ public class MetaData extends BaseDataModel {
 		
 	}
 	
-	public MetaData(String name, String description, List<Field> fields, List<DBRef> types, DBRef defaultType, String action){
+	public MetaData(String name, String description, List<Field> fields, List<DBRef> types, DBRef defaultType, String action, DBRef category){
 		put("name", name);
 		put("description", description);
 		put("fields", fields);
 		put("viewTypes", types);
 		put("defaultViewType", defaultType);
 		put("action", action);
+		put("category", category);
 	}
 
 	public String getName() {
@@ -67,6 +68,14 @@ public class MetaData extends BaseDataModel {
 
 	public void setDefaultViewType(DBRef defaultViewType) {
 		put("defaultViewType", defaultViewType);
+	}
+	
+	public DBRef getCategory() {
+		return (DBRef) get("category");
+	}
+
+	public void setCategory(DBRef category) {
+		put("category", category);
 	}
 	
 	public String getAction() {

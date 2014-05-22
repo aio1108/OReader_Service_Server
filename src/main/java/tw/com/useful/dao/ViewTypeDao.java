@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.bson.types.ObjectId;
 
+import tw.com.useful.data.model.Category;
 import tw.com.useful.data.model.ViewType;
 
 import com.mongodb.BasicDBObject;
@@ -19,24 +20,18 @@ public class ViewTypeDao extends BaseDao {
 		collection.setObjectClass(ViewType.class);
 	}
 	
-	public ViewType findById(ObjectId id){
-		DBObject objectId = new BasicDBObject();
-		objectId.put("_id", id);
-		return (ViewType) collection.findOne(objectId);
+	public ViewType findOne(DBObject query){
+		return (ViewType) collection.findOne(query);
 	}
 	
-	public List<ViewType> findByName(String fieldName){
-		DBObject name = new BasicDBObject();
-		name.put("name", name);
-		DBCursor cursor = collection.find(name);
-		List<ViewType> result = toList(cursor);
-		return result;
+	public List<ViewType> find(DBObject query){
+		DBCursor cursor = collection.find(query);
+		return toList(cursor);
 	}
 	
 	public List<ViewType> find(){
 		DBCursor cursor = collection.find();
-		List<ViewType> result = toList(cursor);
-		return result;
+		return toList(cursor);
 	}
 	
 	private List<ViewType> toList(DBCursor cursor) {
@@ -59,12 +54,6 @@ public class ViewTypeDao extends BaseDao {
 		DBObject objectId = new BasicDBObject();
 		objectId.put("_id", viewType.getId());
 		return collection.update(objectId, viewType);
-	}
-	
-	public WriteResult remove(ObjectId id){
-		DBObject objectId = new BasicDBObject();
-		objectId.put("_id", id);
-		return collection.remove(objectId);
 	}
 	
 	public WriteResult remove(ViewType viewType){
