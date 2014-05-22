@@ -7,7 +7,6 @@ import java.util.Properties;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import tw.com.useful.common.ConfigProperties;
@@ -17,8 +16,6 @@ import tw.com.useful.dao.ViewTypeDao;
 import tw.com.useful.data.model.Field;
 import tw.com.useful.data.model.MetaData;
 import tw.com.useful.data.model.ViewType;
-
-import com.mongodb.DBRef;
 
 public class MongoDBConnectionTest {
 
