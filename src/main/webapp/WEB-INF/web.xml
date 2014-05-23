@@ -63,6 +63,16 @@
     <servlet-name>hyAppDS</servlet-name>
     <url-pattern>/hyAppDS</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>metaDS</display-name>
+    <servlet-name>metaDS</servlet-name>
+    <servlet-class>tw.com.useful.web.MetaDataProviderServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>metaDS</servlet-name>
+    <url-pattern>/metaDS</url-pattern>
+  </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>

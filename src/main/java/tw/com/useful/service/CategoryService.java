@@ -54,4 +54,10 @@ public class CategoryService {
 		query.put("name", categoryName);
 		return categoryDao.find(query);
 	}
+	
+	public List<Category> findByCode(String categoryCode){
+		DBObject query = new BasicDBObject();
+		query.put("code", categoryCode);
+		return categoryDao.find(query);
+	}
 }

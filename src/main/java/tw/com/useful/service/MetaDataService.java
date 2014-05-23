@@ -1,6 +1,8 @@
 package tw.com.useful.service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import org.bson.types.ObjectId;
 
@@ -10,7 +12,9 @@ import com.mongodb.DBRef;
 import com.mongodb.WriteResult;
 
 import tw.com.useful.dao.MetaDataDao;
+import tw.com.useful.data.model.Category;
 import tw.com.useful.data.model.MetaData;
+import tw.com.useful.query.QueryObject;
 
 public class MetaDataService {
 	private MetaDataDao metaDataDao = new MetaDataDao();
@@ -37,6 +41,34 @@ public class MetaDataService {
 	
 	public List<MetaData> find(){
 		return metaDataDao.find();
+	}
+	
+	public List<MetaData> find(DBObject query){
+		return metaDataDao.find(query);
+	}
+	
+	public List<MetaData> findByCategoryAndKeyword(String category, String keyword){
+		if(category == null && keyword == null){
+			return metaDataDao.find();
+		}
+		QueryObject query = new QueryObject();
+		if(keyword != null){
+			Pattern pattern = Pattern.compile("^.*"  + keyword+  ".*$", Pattern.CASE_INSENSITIVE);
+			QueryObject name = new QueryObject("name", pattern);
+			QueryObject desc = new QueryObject("description", pattern);
+			query = name.or(desc);
+		}
+		if(category != null){
+			CategoryService categoryService = new CategoryService();
+			List<Category> categories = categoryService.findByCode(category);
+			if(categories.size() == 0){
+				//means no this category, then return empty list
+				return new ArrayList<MetaData>();
+			}
+			QueryObject cat = new QueryObject("category.$id", categories.get(0).getId());
+			query = query.and(cat);
+		}
+		return metaDataDao.find(query);
 	}
 	
 	public MetaData findById(ObjectId id){
