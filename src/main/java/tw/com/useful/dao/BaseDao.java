@@ -1,7 +1,5 @@
 package tw.com.useful.dao;
 
-import org.bson.types.ObjectId;
-
 import tw.com.useful.connection.MongoDBConnection;
 
 import com.mongodb.BasicDBObject;
@@ -15,7 +13,7 @@ public class BaseDao {
 	protected DB database = MongoDBConnection.getInstance().getDatabase();
 	protected DBCollection collection;
 	
-	public WriteResult remove(ObjectId id){
+	public WriteResult remove(Object id){
 		DBObject objectId = new BasicDBObject();
 		objectId.put("_id", id);
 		return collection.remove(objectId);
@@ -25,7 +23,7 @@ public class BaseDao {
 		return collection.remove(new BasicDBObject());
 	}
 	
-	public DBRef getDBRef(ObjectId id){
+	public DBRef getDBRef(Object id){
 		return new DBRef(database, collection.getName(), id);
 	}
 }

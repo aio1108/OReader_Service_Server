@@ -13,10 +13,9 @@ import org.apache.log4j.Logger;
 
 import tw.com.useful.data.model.MetaData;
 import tw.com.useful.service.MetaDataService;
+import tw.com.useful.util.ReadableJsonConverter;
 
 import com.google.gson.Gson;
-import com.mongodb.BasicDBObject;
-import com.mongodb.DBObject;
 
 public class MetaDataProviderServlet extends HttpServlet {
 	private Logger logger = Logger.getLogger(MetaDataProviderServlet.class);
@@ -37,7 +36,7 @@ public class MetaDataProviderServlet extends HttpServlet {
 		String key = request.getParameter("key");
 		List<MetaData> result = metaDataService.findByCategoryAndKeyword(category, key);
 		Gson gson = new Gson();
-		String jsonResult = gson.toJson(result);
+		String jsonResult = gson.toJson(ReadableJsonConverter.convert(result));
 		String callback = request.getParameter("callback")==null? "" : request.getParameter("callback").toString();
 		logger.debug("callback =============="+ callback);
 		if(callback.length() > 0){

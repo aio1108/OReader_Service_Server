@@ -8,9 +8,9 @@ public class Category extends BaseDataModel {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public Category(String code, String name){
+	public Category(String id, String name){
 		put("name", name);
-		put("code", code);
+		put("_id", id);
 	}
 	
 	public Category(){
@@ -23,13 +23,5 @@ public class Category extends BaseDataModel {
 
 	public void setName(String name) {
 		put("name", name);
-	}
-	
-	public String getCode() {
-		return getString("code");
-	}
-
-	public void setCode(String code) {
-		put("code", code);
 	}
 }

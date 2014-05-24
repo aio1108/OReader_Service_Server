@@ -1,13 +1,17 @@
 package tw.com.useful.data.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.bson.types.ObjectId;
+
+import tw.com.useful.base.ReadableJsonObject;
 import tw.com.useful.util.DBObjectConverter;
 
 import com.mongodb.DBObject;
 import com.mongodb.DBRef;
 
-public class MetaData extends BaseDataModel {
+public class MetaData extends BaseDataModel implements ReadableJsonObject {
 	
 	/**
 	 * 
@@ -84,5 +88,19 @@ public class MetaData extends BaseDataModel {
 
 	public void setAction(String action) {
 		put("action", action);
+	}
+
+	@Override
+	public DBObject toReadableJson() {
+		MetaData cloneObj = (MetaData) this.clone();
+		ObjectId id = (ObjectId) cloneObj.getId();
+		cloneObj.put("_id", id.toHexString());
+		ViewType defaultViewType = (ViewType) DBObjectConverter.convertDBRef(cloneObj.getDefaultViewType(), ViewType.class);
+		cloneObj.put("defaultViewType", defaultViewType);
+		List<ViewType> viewTypes = DBObjectConverter.convertDBRef(cloneObj.getViewTypes(), ViewType.class);
+		cloneObj.put("viewTypes", viewTypes);
+		Category category = (Category) DBObjectConverter.convertDBRef(cloneObj.getCategory(), Category.class);
+		cloneObj.put("category", category);
+		return cloneObj;
 	}
 }

@@ -1,20 +1,18 @@
 package tw.com.useful.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
 import org.bson.types.ObjectId;
 
+import tw.com.useful.dao.MetaDataDao;
+import tw.com.useful.data.model.MetaData;
+import tw.com.useful.query.QueryObject;
+
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
 import com.mongodb.DBRef;
 import com.mongodb.WriteResult;
-
-import tw.com.useful.dao.MetaDataDao;
-import tw.com.useful.data.model.Category;
-import tw.com.useful.data.model.MetaData;
-import tw.com.useful.query.QueryObject;
 
 public class MetaDataService {
 	private MetaDataDao metaDataDao = new MetaDataDao();
@@ -59,13 +57,7 @@ public class MetaDataService {
 			query = name.or(desc);
 		}
 		if(category != null){
-			CategoryService categoryService = new CategoryService();
-			List<Category> categories = categoryService.findByCode(category);
-			if(categories.size() == 0){
-				//means no this category, then return empty list
-				return new ArrayList<MetaData>();
-			}
-			QueryObject cat = new QueryObject("category.$id", categories.get(0).getId());
+			QueryObject cat = new QueryObject("category.$id", category);
 			query = query.and(cat);
 		}
 		return metaDataDao.find(query);

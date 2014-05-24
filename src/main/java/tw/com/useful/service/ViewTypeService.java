@@ -27,7 +27,7 @@ public class ViewTypeService {
 		return viewTypeDao.remove(type);
 	}
 	
-	public WriteResult remove(ObjectId id){
+	public WriteResult remove(Object id){
 		return viewTypeDao.remove(id);
 	}
 	
@@ -39,11 +39,11 @@ public class ViewTypeService {
 		return viewTypeDao.find();
 	}
 	
-	public DBRef getDBRef(ObjectId id){
+	public DBRef getDBRef(Object id){
 		return viewTypeDao.getDBRef(id);
 	}
 	
-	public ViewType findById(ObjectId id){
+	public ViewType findById(Object id){
 		DBObject query = new BasicDBObject();
 		query.put("_id", id);
 		return viewTypeDao.findOne(query);

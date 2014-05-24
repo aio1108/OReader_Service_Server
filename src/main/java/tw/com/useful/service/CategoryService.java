@@ -2,8 +2,6 @@ package tw.com.useful.service;
 
 import java.util.List;
 
-import org.bson.types.ObjectId;
-
 import tw.com.useful.dao.CategoryDao;
 import tw.com.useful.data.model.Category;
 
@@ -27,7 +25,7 @@ public class CategoryService {
 		return categoryDao.remove(category);
 	}
 	
-	public WriteResult remove(ObjectId id){
+	public WriteResult remove(Object id){
 		return categoryDao.remove(id);
 	}
 	
@@ -39,11 +37,11 @@ public class CategoryService {
 		return categoryDao.find();
 	}
 	
-	public DBRef getDBRef(ObjectId id){
+	public DBRef getDBRef(Object id){
 		return categoryDao.getDBRef(id);
 	}
 	
-	public Category findById(ObjectId id){
+	public Category findById(Object id){
 		DBObject query = new BasicDBObject();
 		query.put("_id", id);
 		return categoryDao.findOne(query);
@@ -52,12 +50,6 @@ public class CategoryService {
 	public List<Category> findByName(String categoryName){
 		DBObject query = new BasicDBObject();
 		query.put("name", categoryName);
-		return categoryDao.find(query);
-	}
-	
-	public List<Category> findByCode(String categoryCode){
-		DBObject query = new BasicDBObject();
-		query.put("code", categoryCode);
 		return categoryDao.find(query);
 	}
 }

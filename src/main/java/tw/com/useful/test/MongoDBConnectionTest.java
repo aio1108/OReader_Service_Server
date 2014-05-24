@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import org.apache.log4j.Logger;
+import org.bson.types.ObjectId;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -24,6 +26,7 @@ import tw.com.useful.service.ViewTypeService;
 
 public class MongoDBConnectionTest {
 
+	private Logger logger = Logger.getLogger(MongoDBConnectionTest.class);
 	private MetaDataService metaDataService;
 	private ViewTypeService viewTypeService;
 	private CategoryService categoryService;
@@ -88,7 +91,7 @@ public class MongoDBConnectionTest {
 		obj.setViewTypes(typeList);
 		metaDataService.insert(obj);
 		Assert.assertNotNull(obj.getId());
-		MetaData queryResult = (MetaData) metaDataService.findById(obj.getId());
+		MetaData queryResult = (MetaData) metaDataService.findById((ObjectId) obj.getId());
 		ViewType defaultType = (ViewType) queryResult.getDefaultViewType().fetch();
 		Assert.assertEquals("地圖", defaultType.getName());
 		List<Field> fieldRefs = queryResult.getFields();
