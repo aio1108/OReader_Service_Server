@@ -64,7 +64,7 @@
     <url-pattern>/hyAppDS</url-pattern>
   </servlet-mapping>
   <servlet>
-    <description></description>
+    <description>Servlet for Meta Data</description>
     <display-name>metaDS</display-name>
     <servlet-name>metaDS</servlet-name>
     <servlet-class>tw.com.useful.web.MetaDataProviderServlet</servlet-class>
@@ -72,6 +72,26 @@
   <servlet-mapping>
     <servlet-name>metaDS</servlet-name>
     <url-pattern>/metaDS</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>Servlet for Category</description>
+    <display-name>categoryDS</display-name>
+    <servlet-name>categoryDS</servlet-name>
+    <servlet-class>tw.com.useful.web.CategoryProviderServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>categoryDS</servlet-name>
+    <url-pattern>/categoryDS</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>Servlet for ViewType</description>
+    <display-name>viewTypeDS</display-name>
+    <servlet-name>viewTypeDS</servlet-name>
+    <servlet-class>tw.com.useful.web.ViewTypeProviderServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>viewTypeDS</servlet-name>
+    <url-pattern>/viewTypeDS</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
