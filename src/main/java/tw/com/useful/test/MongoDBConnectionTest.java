@@ -34,9 +34,11 @@ public class MongoDBConnectionTest {
 	@Before
 	public void setup(){
 		Properties properties = new Properties();
-		properties.put("mongodb.host", "127.0.0.1");
-		properties.put("mongodb.port", "27017");
-		properties.put("mongodb.name", "test");
+		properties.put("mongodb.host", "oceanic.mongohq.com");
+		properties.put("mongodb.port", "10030");
+		properties.put("mongodb.name", "UsefulDB");
+		properties.put("mongodb.user", "usefulpeople");
+		properties.put("mongodb.password", "iamuseful");
 		ConfigProperties.getInstance().setProperties(properties);
 		metaDataService = new MetaDataService();
 		viewTypeService = new ViewTypeService();
