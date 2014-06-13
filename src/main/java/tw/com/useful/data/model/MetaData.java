@@ -1,6 +1,5 @@
 package tw.com.useful.data.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.bson.types.ObjectId;
@@ -17,14 +16,12 @@ public class MetaData extends BaseDataModel implements ReadableJsonObject {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private List<Field> fields;
-	
 	
 	public MetaData(){
 		
 	}
 	
-	public MetaData(String name, String description, List<Field> fields, List<DBRef> types, DBRef defaultType, String action, DBRef category){
+	public MetaData(String name, String description, List<Field> fields, List<DBRef> types, DBRef defaultType, String action, List<DBRef> category, String frequency, String department, String source){
 		put("name", name);
 		put("description", description);
 		put("fields", fields);
@@ -32,6 +29,23 @@ public class MetaData extends BaseDataModel implements ReadableJsonObject {
 		put("defaultViewType", defaultType);
 		put("action", action);
 		put("category", category);
+		put("frequency", frequency);
+		put("department", department);
+		put("source", source);
+	}
+
+	public MetaData(DBObject obj) {
+		put("_id", obj.get("_id"));
+		put("name", obj.get("name"));
+		put("description", obj.get("description"));
+		put("fields", obj.get("fields"));
+		put("viewTypes", obj.get("viewTypes"));
+		put("defaultViewType", obj.get("defaultViewType"));
+		put("action", obj.get("action"));
+		put("category", obj.get("category"));
+		put("frequency", obj.get("frequency"));
+		put("department", obj.get("department"));
+		put("source", obj.get("source"));
 	}
 
 	public String getName() {
@@ -74,11 +88,11 @@ public class MetaData extends BaseDataModel implements ReadableJsonObject {
 		put("defaultViewType", defaultViewType);
 	}
 	
-	public DBRef getCategory() {
-		return (DBRef) get("category");
+	public List<DBRef> getCategory() {
+		return (List<DBRef>) get("category");
 	}
 
-	public void setCategory(DBRef category) {
+	public void setCategory(List<DBRef> category) {
 		put("category", category);
 	}
 	
@@ -88,6 +102,30 @@ public class MetaData extends BaseDataModel implements ReadableJsonObject {
 
 	public void setAction(String action) {
 		put("action", action);
+	}
+	
+	public String getFrequency() {
+		return getString("frequency");
+	}
+
+	public void setFrequency(String frequency) {
+		put("frequency", frequency);
+	}
+	
+	public String getDepartment() {
+		return getString("department");
+	}
+
+	public void setDepartment(String department) {
+		put("department", department);
+	}
+	
+	public String getSource() {
+		return getString("source");
+	}
+
+	public void setSource(String source) {
+		put("source", source);
 	}
 
 	@Override
@@ -99,7 +137,7 @@ public class MetaData extends BaseDataModel implements ReadableJsonObject {
 		cloneObj.put("defaultViewType", defaultViewType);
 		List<ViewType> viewTypes = DBObjectConverter.convertDBRef(cloneObj.getViewTypes(), ViewType.class);
 		cloneObj.put("viewTypes", viewTypes);
-		Category category = (Category) DBObjectConverter.convertDBRef(cloneObj.getCategory(), Category.class);
+		List<Category> category = DBObjectConverter.convertDBRef(cloneObj.getCategory(), Category.class);
 		cloneObj.put("category", category);
 		return cloneObj;
 	}

@@ -7,6 +7,7 @@ import org.bson.types.ObjectId;
 
 import tw.com.useful.dao.MetaDataDao;
 import tw.com.useful.data.model.MetaData;
+import tw.com.useful.query.ElementMatchQueryObject;
 import tw.com.useful.query.QueryObject;
 
 import com.mongodb.BasicDBObject;
@@ -54,10 +55,12 @@ public class MetaDataService {
 			Pattern pattern = Pattern.compile("^.*"  + keyword+  ".*$", Pattern.CASE_INSENSITIVE);
 			QueryObject name = new QueryObject("name", pattern);
 			QueryObject desc = new QueryObject("description", pattern);
-			query = name.or(desc);
+			QueryObject department = new QueryObject("department", pattern);
+			query = name.or(desc).or(department);
 		}
 		if(category != null){
-			QueryObject cat = new QueryObject("category.$id", category);
+			QueryObject catId = new QueryObject("$id", category);
+			QueryObject cat = new ElementMatchQueryObject("category", catId);
 			query = query.and(cat);
 		}
 		return metaDataDao.find(query);
@@ -69,7 +72,7 @@ public class MetaDataService {
 		return metaDataDao.findOne(query);
 	}
 	
-	public DBRef getDBRef(ObjectId id){
+	public DBRef getDBRef(Object id){
 		return metaDataDao.getDBRef(id);
 	}
 }

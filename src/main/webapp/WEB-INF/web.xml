@@ -74,6 +74,16 @@
     <url-pattern>/metaDS</url-pattern>
   </servlet-mapping>
   <servlet>
+    <description>Servlet for User Data</description>
+    <display-name>userDS</display-name>
+    <servlet-name>userDS</servlet-name>
+    <servlet-class>tw.com.useful.web.UserProviderServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>userDS</servlet-name>
+    <url-pattern>/userDS</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <description>Servlet for Category</description>
     <display-name>categoryDS</display-name>
     <servlet-name>categoryDS</servlet-name>
