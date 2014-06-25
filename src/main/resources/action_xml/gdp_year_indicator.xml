@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- GDP依支出分 -->
+<action>
+	<dataSetList>
+		<dataset id="ds1" type="service">
+			<service name="tw.com.useful.action.service.DataConvertService" operation="getXMLDataFromURL" />
+			<parm name="url" value="http://www.dgbas.gov.tw/public/data/open/Stat/OPEN_B.2.2.xml"/>
+			<parm name="xslName" value="gdp_year_indicator.xsl"/>
+		</dataset>
+	</dataSetList>
+	
+	<output type="JSON"> <!--@type= json/xml, default is json -->
+		<data ds="${ds1}" />
+	</output>
+</action>
