@@ -12,7 +12,7 @@
 	<output type="JSON"> <!--@type= json/xml, default is json -->
 		<for-each var="row" items="${ds1}">
 			<records>
-				<stockId>${row[""]}</stockId>
+				<date>${row[""]}</date>
 				<listedCount>${row["上市公司家數"]}</listedCount>
 				<listedCapital>${row["上市公司資本額"]}</listedCapital>
 				<listedIncrease>${row["上市公司資本額成長率"]}</listedIncrease>

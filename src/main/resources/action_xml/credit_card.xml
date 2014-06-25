@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 信用卡業務統計 -->
+<action>
+	<dataSetList>
+		<dataset id="ds1" type="service">
+			<service name="tw.com.useful.action.service.DataConvertService" operation="getCSVDataFromURL" />
+			<parm name="url" value="http://data.gov.tw/iisi/logaccess?dataUrl=http%3A%2F%2Fevent.fsc.gov.tw%2Ffsd%2Ffncl_od.asp%3Fopendata%3DFBI007&amp;type=CSV&amp;nid=6972"/>
+			<parm name="headerIds" value=",流通卡數,簽帳金額合計,國內簽帳金額,國外簽帳金額,預借現金合計,國內預借現金,國外預借現金,循環信用金額"/>
+		</dataset>
+	</dataSetList>
+	
+	<output type="JSON"> <!--@type= json/xml, default is json -->
+		<for-each var="row" items="${ds1}">
+			<records>
+				<date>${row[""]}</date>
+				<cardCount>${row["流通卡數"]}</cardCount>
+				<totalCredit>${row["簽帳金額合計"]}</totalCredit>
+				<localCredit>${row["國內簽帳金額"]}</localCredit>
+				<foreignCredit>${row["國外簽帳金額"]}</foreignCredit>
+				<totalBorrow>${row["預借現金合計"]}</totalBorrow>
+				<localBorrow>${row["國內預借現金"]}</localBorrow>
+				<foreignBorrow>${row["國外預借現金"]}</foreignBorrow>
+				<recursionCredit>${row["循環信用金額"]}</recursionCredit>
+			</records>
+		</for-each>
+	</output>
+</action>
