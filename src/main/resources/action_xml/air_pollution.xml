@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 空氣品質即時污染指標 -->
+<action>
+	<dataSetList>
+		<dataset id="ds1" type="service">
+			<service name="tw.com.useful.action.service.DataConvertService" operation="getJsonDataFromURL" />
+			<parm name="url" value="http://opendata.epa.gov.tw/ws/Data/AQX/?$orderby=SiteName&$skip=0&$top=1000&format=json"/>
+		</dataset>
+	</dataSetList>
+	
+	<output type="JSON"> <!--@type= json/xml, default is json -->
+		<for-each var="row" items="${ds1}">
+			<records>
+				<siteName>${row["SiteName"]}</siteName>
+				<county>${row["County"]}</county>
+				<PSI>${row["PSI"]}</PSI>
+				<majorPollutant>${row["MajorPollutant"]}</majorPollutant>
+				<status>${row["Status"]}</status>
+				<SO2>${row["SO2"]}</SO2>
+				<CO>${row["CO"]}</CO>
+				<O3>${row["O3"]}</O3>
+				<PM10>${row["PM10"]}</PM10>
+				<PM25>${row["PM2.5"]}</PM25>
+				<NO2>${row["NO2"]}</NO2>
+				<windSpeed>${row["WindSpeed"]}</windSpeed>
+				<windDirec>${row["WindDirec"]}</windDirec>
+				<publishTime>${row["PublishTime"]}</publishTime>
+			</records>
+		</for-each>
+	</output>
+</action>

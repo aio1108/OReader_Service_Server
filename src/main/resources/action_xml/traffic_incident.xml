@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 歷年重大交通事故地點資料 -->
+<action>
+	<dataSetList>
+		<dataset id="ds1" type="service">
+			<service name="tw.com.useful.action.service.DataConvertService" operation="getCSVDataFromURL" />
+			<parm name="url" value="http://data.moi.gov.tw/DownLoadFile.aspx?sn=58&amp;type=CSV&amp;nid=6132"/>
+			<parm name="headerIds" value="date,time,place,death,hurt,car,reason"/>
+		</dataset>
+	</dataSetList>
+	
+	<output type="JSON"> <!--@type= json/xml, default is json -->
+		<for-each var="row" items="${ds1}">
+			<records>
+				<date>${row.date}</date>
+				<time>${row.time}</time>
+				<place>${row.place}</place>
+				<death>${row.death}</death>
+				<hurt>${row.hurt}</hurt>
+				<car>${row.car}</car>
+				<reason>${row.reason}</reason>
+			</records>
+		</for-each>
+	</output>
+</action>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 農產品交易行情 -->
+<action>
+	<dataSetList>
+		<dataset id="ds1" type="service">
+			<service name="tw.com.useful.action.service.DataConvertService" operation="getJsonDataFromURL" />
+			<parm name="url" value="http://m.coa.gov.tw/OpenData/FarmTransData.aspx"/>
+		</dataset>
+	</dataSetList>
+	
+	<output type="JSON"> <!--@type= json/xml, default is json -->
+		<for-each var="row" items="${ds1}">
+			<records>
+				<date>${row["交易日期"]}</date>
+				<code>${row["作物代號"]}</code>
+				<name>${row["作物名稱"]}</name>
+				<marketCode>${row["市場代號"]}</marketCode>
+				<marketName>${row["市場名稱"]}</marketName>
+				<upper>${row["上價"]}</upper>
+				<middle>${row["中價"]}</middle>
+				<down>${row["下價"]}</down>
+				<average>${row["平均價"]}</average>
+				<amount>${row["交易量"]}</amount>
+			</records>
+		</for-each>
+	</output>
+</action>

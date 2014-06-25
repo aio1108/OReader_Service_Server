@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 景氣指標 -->
+<action>
+	<dataSetList>
+		<dataset id="ds1" type="service">
+			<service name="tw.com.useful.action.service.DataConvertService" operation="getXMLDataFromURL" />
+			<parm name="url" value="http://www.ndc.gov.tw/dn.aspx?uid=12970"/>
+			<parm name="xslName" value="business_indicator.xsl"/>
+		</dataset>
+	</dataSetList>
+	
+	<output type="JSON"> <!--@type= json/xml, default is json -->
+		<data ds="${ds1}" />
+	</output>
+</action>
