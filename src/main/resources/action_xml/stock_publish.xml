@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 公開發行公司股票發行概況統計表 -->
+<action>
+	<dataSetList>
+		<dataset id="ds1" type="service">
+			<service name="tw.com.useful.action.service.DataConvertService" operation="getCSVDataFromURL" />
+			<parm name="url" value="http://data.gov.tw/iisi/logaccess?dataUrl=http%3A%2F%2Fevent.fsc.gov.tw%2Ffsd%2Ffncl_od.asp%3Fopendata%3DFSF001&amp;type=CSV&amp;nid=6649"/>
+			<parm name="headerIds" value=",上市公司家數,上市公司資本額,上市公司資本額成長率,上市公司面值,上市公司市值,上櫃公司家數,上櫃公司資本額,上櫃公司資本額成長率,上櫃公司面值,上櫃公司市值,未上市未上櫃公司家數,未上市未上櫃公司資本額"/>
+		</dataset>
+	</dataSetList>
+	
+	<output type="JSON"> <!--@type= json/xml, default is json -->
+		<for-each var="row" items="${ds1}">
+			<records>
+				<stockId>${row[""]}</stockId>
+				<listedCount>${row["上市公司家數"]}</listedCount>
+				<listedCapital>${row["上市公司資本額"]}</listedCapital>
+				<listedIncrease>${row["上市公司資本額成長率"]}</listedIncrease>
+				<listedAmount>${row["上市公司面值"]}</listedAmount>
+				<listedValue>${row["上市公司市值"]}</listedValue>
+				<publiclyHoldCount>${row["上櫃公司家數"]}</publiclyHoldCount>
+				<publiclyHoldCapital>${row["上櫃公司資本額"]}</publiclyHoldCapital>
+				<publiclyHoldIncrease>${row["上櫃公司資本額成長率"]}</publiclyHoldIncrease>
+				<publiclyHoldAmount>${row["上櫃公司面值"]}</publiclyHoldAmount>
+				<publiclyHoldValue>${row["上櫃公司市值"]}</publiclyHoldValue>
+				<unlistedCount>${row["未上市未上櫃公司家數"]}</unlistedCount>
+				<unlistedCapital>${row["未上市未上櫃公司資本額"]}</unlistedCapital>
+			</records>
+		</for-each>
+	</output>
+</action>
