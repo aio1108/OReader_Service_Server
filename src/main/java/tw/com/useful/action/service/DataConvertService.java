@@ -6,6 +6,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -19,6 +21,10 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executors;
 
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Result;
 import javax.xml.transform.Source;
@@ -32,6 +38,8 @@ import net.sf.json.JSON;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpException;
 import org.apache.commons.httpclient.methods.GetMethod;
+import org.apache.commons.httpclient.protocol.Protocol;
+import org.apache.commons.httpclient.protocol.ProtocolSocketFactory;
 import org.apache.log4j.Logger;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
@@ -41,6 +49,7 @@ import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
+import org.jsslutils.extra.apachehttpclient.SslContextedSecureProtocolSocketFactory;
 import org.supercsv.cellprocessor.Optional;
 import org.supercsv.cellprocessor.ift.CellProcessor;
 import org.supercsv.io.CsvMapReader;
@@ -255,9 +264,14 @@ public class DataConvertService extends LogicalService
     	String url = (String)this.getInputParameter("url","");
     	String charset = (String)this.getInputParameter("charset", "UTF-8");
     	String xslName = (String) this.getInputParameter("xslName","");
+    	String byPassCert = (String) this.getInputParameter("byPassCert","false");
     	
 		HttpClient httpclient = new HttpClient();
 		GetMethod get = new GetMethod(url);
+		
+		if(byPassCert.equals("true")){
+			byPassCertification();
+		}
 
 		try{
 			httpclient.getParams().setParameter("http.protocol.content-charset", charset);
@@ -270,9 +284,9 @@ public class DataConvertService extends LogicalService
 			
 			doc = RmJDomUtil.buildXml(is);
 		}catch (HttpException e){
-			
+			e.printStackTrace();
 		}catch (IOException e){
-			
+			e.printStackTrace();
 		}catch (JDOMException e){
 			e.printStackTrace();
 		}
@@ -285,6 +299,35 @@ public class DataConvertService extends LogicalService
 		}
 		
 		return doc;
+	}
+
+	private void byPassCertification() {
+		TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager(){
+	        public java.security.cert.X509Certificate[] getAcceptedIssuers(){
+	        	return null;
+	        }
+
+	        public void checkClientTrusted(java.security.cert.X509Certificate[] certs, String authType){
+
+	        }
+
+	        public void checkServerTrusted(java.security.cert.X509Certificate[] certs, String authType){
+
+	        }
+		}};
+
+		SSLContext sc;
+		try {
+			sc = SSLContext.getInstance("SSL");
+			sc.init(null, trustAllCerts, new java.security.SecureRandom());
+			SslContextedSecureProtocolSocketFactory secureProtocolSocketFactory = new SslContextedSecureProtocolSocketFactory(sc);
+			secureProtocolSocketFactory.setHostnameVerification(false);
+			Protocol.registerProtocol("https", new Protocol("https", (ProtocolSocketFactory)secureProtocolSocketFactory, 443));
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		} catch (KeyManagementException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public List getJsonDataFromURL(){

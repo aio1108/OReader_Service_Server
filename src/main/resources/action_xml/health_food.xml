@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- GDP依支出分 -->
+<action>
+	<dataSetList>
+		<dataset id="ds1" type="service">
+			<service name="tw.com.useful.action.service.DataConvertService" operation="getXMLDataFromURL" />
+			<parm name="url" value="http://consumer.fda.gov.tw/OpenData/GetOpenData.aspx?type=1"/>
+			<parm name="xslName" value="health_food.xsl"/>
+			<parm name="byPassCert" value="true"/>
+		</dataset>
+	</dataSetList>
+	
+	<output type="JSON"> <!--@type= json/xml, default is json -->
+		<data ds="${ds1}" />
+	</output>
+</action>

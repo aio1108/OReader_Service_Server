@@ -220,6 +220,12 @@
 		<version>2.12.1</version>
 	</dependency>
 	
+	<dependency>
+		<groupId>org.jsslutils</groupId>
+		<artifactId>jsslutils-extra-apachehttpclient3</artifactId>
+		<version>1.0.7</version>
+	</dependency>
+	
   </dependencies>
   
 	<repositories>
