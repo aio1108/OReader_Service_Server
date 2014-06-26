@@ -3,14 +3,14 @@ package tw.com.useful.test;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+import java.util.Random;
 
 import org.apache.log4j.Logger;
 import org.bson.types.ObjectId;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
 import tw.com.useful.common.ConfigProperties;
 import tw.com.useful.connection.MongoDBConnection;
@@ -26,6 +26,8 @@ import tw.com.useful.service.SubscribeService;
 import tw.com.useful.service.UserService;
 import tw.com.useful.service.ViewTypeService;
 
+import com.mongodb.DBRef;
+
 public class MongoDBConnectionTest {
 
 	private Logger logger = Logger.getLogger(MongoDBConnectionTest.class);
@@ -35,7 +37,7 @@ public class MongoDBConnectionTest {
 	private UserService userService;
 	private SubscribeService subscribeService;
 	
-	@Before
+	@BeforeClass
 	public void setup(){
 		Properties properties = new Properties();
 		properties.put("mongodb.host", "oceanic.mongohq.com");
@@ -104,8 +106,7 @@ public class MongoDBConnectionTest {
 		Assert.assertNotNull(line.getId());
 	}
 	
-	@Ignore
-	@Test
+	@Test(enabled=false)
 	public void testMetaDataSave(){
 		List<ViewType> types = viewTypeService.find();
 		List<Category> categories = categoryService.find();
@@ -364,31 +365,34 @@ public class MongoDBConnectionTest {
 		Assert.assertNotNull(obj.getId());
 	}
 
-	@Ignore
-	@Test
+	@Test(dependsOnMethods={"testMetaDataService"})
 	public void testUserService(){
-		testMetaDataService();
-		List<ViewType> types = viewTypeService.find();
-		List<MetaData> metas = metaDataService.find();
-		Subscribe sub1 = new Subscribe(viewTypeService.getDBRef(types.get(1).getId()), metaDataService.getDBRef(metas.get(0).getId()));
-		Subscribe sub2 = new Subscribe(viewTypeService.getDBRef(types.get(0).getId()), metaDataService.getDBRef(metas.get(1).getId()));
-		Subscribe sub3 = new Subscribe(viewTypeService.getDBRef(types.get(1).getId()), metaDataService.getDBRef(metas.get(1).getId()));
-		subscribeService.insert(sub1);
-		subscribeService.insert(sub2);
-		subscribeService.insert(sub3);
-		List subscribeList1 = new ArrayList();
-		subscribeList1.add(subscribeService.getDBRef(sub1.getId()));
-		User user1 = new User("weichen@hyweb.com.tw", "1111", subscribeList1);
-		List subscribeList2 = new ArrayList();
-		subscribeList2.add(subscribeService.getDBRef(sub2.getId()));
-		subscribeList2.add(subscribeService.getDBRef(sub3.getId()));
-		User user2 = new User("sunnywu@hyweb.com.tw", "2222", subscribeList2);
-		userService.insert(user1);
-		userService.insert(user2);
+		createMockUser("weichen@hyweb.com.tw", "1111");
+		createMockUser("sunnywu@hyweb.com.tw", "2222");
 		Assert.assertTrue(userService.find().size() > 0);
 	}
 	
-	@After
+	private void createMockUser(String email, String password) {
+		List<MetaData> metas = metaDataService.find();
+		List subscribeList = new ArrayList();
+		Random dice = new Random();
+		int subscribeCount = dice.nextInt(metas.size()) + 1;
+		while(subscribeCount > 0){
+			int metaDataIndex = dice.nextInt(metas.size());
+			MetaData metaData = metas.get(metaDataIndex);
+			List<DBRef> viewTypes = metaData.getViewTypes();
+			int viewTypeIndex = dice.nextInt(viewTypes.size());
+			Subscribe subscribe = new Subscribe(viewTypes.get(viewTypeIndex), metaDataService.getDBRef(metas.get(metaDataIndex).getId()));
+			subscribeService.insert(subscribe);
+			subscribeList.add(subscribeService.getDBRef(subscribe.getId()));
+			metas.remove(metaDataIndex);
+			subscribeCount = subscribeCount - 1;
+		}
+		User user = new User(email, password, subscribeList);
+		userService.insert(user);
+	}
+
+	@AfterClass
 	public void done(){
 		//clearCollections();
 		MongoDBConnection.getInstance().close();
