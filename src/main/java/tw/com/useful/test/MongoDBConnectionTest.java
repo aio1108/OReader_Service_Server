@@ -369,6 +369,7 @@ public class MongoDBConnectionTest {
 	public void testUserService(){
 		createMockUser("weichen@hyweb.com.tw", "1111");
 		createMockUser("sunnywu@hyweb.com.tw", "2222");
+		createMockUser("TCA@test.com.tw", "58efea");
 		Assert.assertTrue(userService.find().size() > 0);
 	}
 	
