@@ -113,6 +113,36 @@
     <servlet-name>auth</servlet-name>
     <url-pattern>/auth</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description>Servlet for add subscribe</description>
+    <display-name>AddSubscribe</display-name>
+    <servlet-name>AddSubscribe</servlet-name>
+    <servlet-class>tw.com.useful.web.AddSubscribeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddSubscribe</servlet-name>
+    <url-pattern>/subscribe/add</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>Servlet for update subscribe</description>
+    <display-name>UpdateSubscribe</display-name>
+    <servlet-name>UpdateSubscribe</servlet-name>
+    <servlet-class>tw.com.useful.web.UpdateSubscribeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateSubscribe</servlet-name>
+    <url-pattern>/subscribe/update</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>Servlet for remove subscribe</description>
+    <display-name>RemoveSubscribe</display-name>
+    <servlet-name>RemoveSubscribe</servlet-name>
+    <servlet-class>tw.com.useful.web.RemoveSubscribeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RemoveSubscribe</servlet-name>
+    <url-pattern>/subscribe/remove</url-pattern>
+  </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
