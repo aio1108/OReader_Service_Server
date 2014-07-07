@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 空氣品質即時污染指標 -->
+<action>
+	<dataSetList>
+		<dataset id="ds1" type="service">
+			<service name="tw.com.useful.action.service.DataConvertService" operation="getJsonDataFromURL" />
+			<parm name="url" value="http://cloud.culture.tw/frontsite/trans/SearchShowAction.do?method=doFindTypeJ&amp;category=2"/>
+		</dataset>
+	</dataSetList>
+	
+	<output type="JSON"> <!--@type= json/xml, default is json -->
+		<for-each var="row" items="${ds1}">
+			<records>
+				<title>${row["title"]}</title>
+				<time>${row["showInfo"][0]["time"]}</time>
+				<location>${row["showInfo"][0]["location"]}</location>
+				<locationName>${row["showInfo"][0]["locationName"]}</locationName>
+				<onSales>${row["showInfo"][0]["onSales"]}</onSales>
+				<price>${row["showInfo"][0]["price"]}</price>
+				<latitude>${row["showInfo"][0]["latitude"]}</latitude>
+				<longitude>${row["showInfo"][0]["longitude"]}</longitude>
+				<endTime>${row["showInfo"][0]["endTime"]}</endTime>
+			</records>
+		</for-each>
+	</output>
+</action>
