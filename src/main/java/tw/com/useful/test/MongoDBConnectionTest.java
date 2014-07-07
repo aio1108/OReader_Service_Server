@@ -65,6 +65,8 @@ public class MongoDBConnectionTest {
 		Category finance = new Category("finance", "金融");
 		Category peopleware = new Category("peopleware", "人力");
 		Category food = new Category("food", "食品");
+		Category entertainment = new Category("entertainment", "娛樂");
+		Category life = new Category("life", "生活");
 		categoryService.insert(business);
 		categoryService.insert(travel);
 		categoryService.insert(farm);
@@ -73,6 +75,8 @@ public class MongoDBConnectionTest {
 		categoryService.insert(finance);
 		categoryService.insert(peopleware);
 		categoryService.insert(food);
+		categoryService.insert(entertainment);
+		categoryService.insert(life);
 		Assert.assertNotNull(business.getId());
 		Assert.assertNotNull(travel.getId());
 		Assert.assertNotNull(farm.getId());
@@ -81,6 +85,8 @@ public class MongoDBConnectionTest {
 		Assert.assertNotNull(finance.getId());
 		Assert.assertNotNull(peopleware.getId());
 		Assert.assertNotNull(food.getId());
+		Assert.assertNotNull(entertainment.getId());
+		Assert.assertNotNull(life.getId());
 	}
 
 	private void clearCollections() {
@@ -147,8 +153,53 @@ public class MongoDBConnectionTest {
 		createGDPQuarter();
 		createAirPollution();
 		createCreditCard();
+		createDramaInfo();
+		createiTaiwanChiayi();
 	}
 	
+	private void createiTaiwanChiayi() {
+		List categoryList = new ArrayList();
+		List typeList = new ArrayList();
+		List fieldList = new ArrayList();
+		fieldList.add(new Field("serial", "編號"));
+		fieldList.add(new Field("name", "熱點名稱"));
+		fieldList.add(new Field("address", "地址"));
+		typeList.add(viewTypeService.getDBRef(viewTypeService.findById("table").getId()));
+		typeList.add(viewTypeService.getDBRef(viewTypeService.findById("map").getId()));
+		categoryList.add(categoryService.getDBRef(categoryService.findById("travel").getId()));
+		categoryList.add(categoryService.getDBRef(categoryService.findById("life").getId()));
+		MetaData obj = new MetaData("嘉義市iTaiwan熱點", "本資料集主要提供嘉義市iTaiwan熱點", 
+									fieldList, typeList, viewTypeService.getDBRef(viewTypeService.findById("map").getId()), 
+									"itaiwan_chiayi.xml", categoryList, "不定期", 
+									"嘉義市政府", "http://data.gov.tw/node/8343");
+		metaDataService.insert(obj);
+		Assert.assertNotNull(obj.getId());
+	}
+
+	private void createDramaInfo() {
+		List categoryList = new ArrayList();
+		List typeList = new ArrayList();
+		List fieldList = new ArrayList();
+		fieldList.add(new Field("title", "活動名稱"));
+		fieldList.add(new Field("time", "活動起始時間"));
+		fieldList.add(new Field("location", "活動地點"));
+		fieldList.add(new Field("locationName", "活動地點名稱"));
+		fieldList.add(new Field("onSales", "是否售票"));
+		fieldList.add(new Field("price", "票價"));
+		fieldList.add(new Field("latitude", "緯度"));
+		fieldList.add(new Field("longitude", "經度"));
+		fieldList.add(new Field("endTime", "活動截止時間"));
+		typeList.add(viewTypeService.getDBRef(viewTypeService.findById("table").getId()));
+		typeList.add(viewTypeService.getDBRef(viewTypeService.findById("map").getId()));
+		categoryList.add(categoryService.getDBRef(categoryService.findById("entertainment").getId()));
+		MetaData obj = new MetaData("戲劇表演資訊", "戲劇表演資訊", 
+									fieldList, typeList, viewTypeService.getDBRef(viewTypeService.findById("map").getId()), 
+									"drama_info.xml", categoryList, "每日", 
+									"文化部", "http://data.gov.tw/node/6016");
+		metaDataService.insert(obj);
+		Assert.assertNotNull(obj.getId());
+	}
+
 	private void createCreditCard() {
 		List categoryList = new ArrayList();
 		List typeList = new ArrayList();
