@@ -1,7 +1,6 @@
 package tw.com.useful.action.service;
 
 import java.io.ByteArrayInputStream;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -19,21 +18,10 @@ import java.util.Set;
 import java.util.TreeMap;
 import java.util.concurrent.Callable;
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.Executors;
 
-import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Result;
-import javax.xml.transform.Source;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-
-import net.sf.json.JSON;
 
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpException;
@@ -47,7 +35,6 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 import org.jdom.Document;
-import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jsslutils.extra.apachehttpclient.SslContextedSecureProtocolSocketFactory;
 import org.supercsv.cellprocessor.Optional;
@@ -59,14 +46,9 @@ import org.supercsv.prefs.CsvPreference;
 import tw.com.useful.runner.util.LogicalService;
 import tw.com.useful.runner.util.LsUtil;
 import tw.com.useful.runner.util.RmJDomUtil;
-import tw.com.useful.util.JDomUtil;
-import tw.com.useful.util.JSONUtil;
 
 import com.google.common.util.concurrent.FutureCallback;
-import com.google.common.util.concurrent.Futures;
-import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.ListeningExecutorService;
-import com.google.common.util.concurrent.MoreExecutors;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
@@ -358,6 +340,34 @@ public class DataConvertService extends LogicalService
 		return resultList;
 	}
 	
+	//TODO: 還有問題待處理
+	private List<Map> getDataFromCSVFile(String headerIds, InputStream is) {
+		List<Map> resultList = new ArrayList<Map>();
+		ICsvMapReader mapReader = null;
+		mapReader = new CsvMapReader(new InputStreamReader(is), CsvPreference.STANDARD_PREFERENCE);
+		try {
+			String[] header = mapReader.getHeader(true);
+			final CellProcessor[] processors = getProcessors(header);
+			final Map<String, String> headerMap = getHeaderMap(headerIds, header);
+			Map<String, Object> customerMap;
+	        while( (customerMap = mapReader.read(header, processors)) != null ) {
+	        	Map<String, Object> row = new HashMap<String, Object>();
+	        	if(headerIds.length() == 0){
+	        		row = customerMap;
+	        	}else{
+	        		for(String key : headerMap.keySet()){
+	            		row.put(headerMap.get(key), customerMap.get(key));
+	            	}
+	        	}
+	        	resultList.add(row);
+	        }
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return resultList;
+	}
+
 	public List<Map> getCSVDataFromURL(){
 		List<Map> resultList = new ArrayList<Map>();
 		ICsvMapReader mapReader = null;
