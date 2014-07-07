@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 嘉義市iTaiwan熱點 -->
+<action>
+	<dataSetList>
+		<dataset id="ds1" type="service">
+			<service name="tw.com.useful.action.service.DataConvertService" operation="getCSVDataFromURL" />
+			<parm name="url" value="http://data.gov.tw/iisi/logaccess?dataUrl=http%3A%2F%2Fwww.chiayi.gov.tw%2Fopendata%2FiTaiwan.csv&amp;type=CSV&amp;nid=8343"/>
+			<parm name="headerIds" value="編號,熱點名稱,地址"/>
+		</dataset>
+	</dataSetList>
+	
+	<output type="JSON"> <!--@type= json/xml, default is json -->
+		<for-each var="row" items="${ds1}">
+			<records>
+				<serial>${row["編號"]}</serial>
+				<name>${row["熱點名稱"]}</name>
+				<address>${row["地址"]}</address>
+			</records>
+		</for-each>
+	</output>
+</action>
