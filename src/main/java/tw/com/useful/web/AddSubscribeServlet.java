@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
+import org.bson.types.ObjectId;
 
 import tw.com.useful.data.model.Subscribe;
 import tw.com.useful.data.model.User;
@@ -49,7 +50,7 @@ public class AddSubscribeServlet extends HttpServlet {
 		String metaId = request.getParameter("metaId");
 		String preferType = request.getParameter("preferType");
 		Subscribe subscribe = new Subscribe();
-		subscribe.setMetaData(metaDataService.getDBRef(metaId));
+		subscribe.setMetaData(metaDataService.getDBRef(new ObjectId(metaId)));
 		subscribe.setPreferViewType(viewTypeService.getDBRef(preferType));
 		WriteResult insertResult = subscribeService.insert(subscribe);
 		User user = userService.findById(id);
